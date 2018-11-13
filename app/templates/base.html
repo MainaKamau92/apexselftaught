@@ -1,0 +1,198 @@
+{% import "bootstrap/utils.html" as utils %} <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>{{ title }}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link
+      href="{{ url_for('static', filename='./css/bootstrap.min.css') }}"
+      rel="stylesheet"
+    />
+
+    <!-- Custom fonts for this template -->
+    <link
+      href="{{ url_for('static', filename = './css/all.min.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename = './css/simple-line-icons.css') }}"
+    />
+
+    <!-- Custom styles for this template -->
+    <link
+      href="{{ url_for('static', filename = './css/apex.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body id="page-top">
+    {% block navbar %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-trans" id="mainNav">
+      <div class="container-fluid">
+        <a
+          class="navbar-brand js-scroll-trigger"
+          href="{{ url_for('home.homepage') }}"
+          ><i class="fa fa-home"></i>&nbsp;Home</a
+        >
+        <button
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          Menu <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          {% if current_user.is_authenticated and current_user.is_freelancer ==
+          True and current_user.is_employer == False %}
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.register') }}"
+                ><i class="fa fa-user-edit"></i>&nbsp;Hi
+                {{ current_user.username }}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('freelancer.dashboard') }}">
+                <i class="fa fa-user-graduate"></i>&nbsp;Freelancers'
+                Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.logout') }}"
+                ><i class="fa fa-user-lock"></i>&nbsp;Logout</a
+              >
+            </li>
+          </ul>
+          {% elif current_user.is_authenticated and current_user.is_freelancer
+          == True and current_user.is_employer == True %}
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.register') }}"
+                ><i class="fa fa-user-edit"></i>&nbsp;Hi
+                {{ current_user.username }}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('freelancer.dashboard') }}">
+                <i class="fa fa-user-graduate"></i>&nbsp;Freelancers'
+                Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('employer.dashboard') }}">
+                <i class="fa fa-user-graduate"></i>&nbsp;Employers' Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.logout') }}"
+                ><i class="fa fa-user-lock"></i>&nbsp;Logout</a
+              >
+            </li>
+          </ul>
+          {% elif current_user.is_authenticated and current_user.is_admin %}
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.register') }}"
+                ><i class="fa fa-user-edit"></i>&nbsp;Hi
+                {{ current_user.username }}</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user-shield"></i>&nbsp;Admins' Dashboard</a>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color:rgba(0,0,0,0.7); width: 200px;">
+                    <a class="nav-link" href="{{ url_for('home.admin_dashboard') }}">
+                        <i class="fa fa-user-tie"></i>&nbsp;Employers</a>
+                      <a class="nav-link" href="{{ url_for('home.admin_dashboard') }}">
+                        <i class="fa fa-user-graduate"></i>&nbsp;Freelancers</a>
+                </div>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.logout') }}"
+                ><i class="fa fa-user-lock"></i>&nbsp;Logout</a
+              >
+            </li>
+          </ul>
+          {% elif current_user.is_authenticated and current_user.is_freelancer
+          == False and current_user.is_employer == True %}
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.register') }}"
+                ><i class="fa fa-user-edit"></i>&nbsp;Hi
+                {{ current_user.username }}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="{{ url_for('employer.dashboard') }}"
+                style="border: 1px solid #fff;"
+              >
+                <i class="fa fa-user-tie"></i>&nbsp;Employers-Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.logout') }}"
+                ><i class="fa fa-user-lock"></i>&nbsp;Logout</a
+              >
+            </li>
+          </ul>
+          {% else %}
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link js-scroll-trigger"
+                href="{{ url_for('auth.register') }}"
+                ><i class="fa fa-user-edit"></i>&nbsp;Register</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link js-scroll-trigger"
+                href="{{ url_for('auth.login') }}"
+                ><i class="fa fa-user-lock"></i>&nbsp;Login</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact"
+                ><i class="fa fa-phone"></i>&nbsp;Contact</a
+              >
+            </li>
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    {% endblock navbar %}
+    <div class="text-center" style="width: 40%; margin: auto;">
+      {{ utils.flashed_messages() }}
+    </div>
+    {% block body %} {% endblock body %}
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename = './js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = './js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = './js/all.min.js') }}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{{ url_for('static', filename = './js/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{{ url_for('static', filename = './js/apex.js') }}"></script>
+  </body>
+</html>

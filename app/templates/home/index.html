@@ -1,0 +1,134 @@
+<!--app/templates/home/index.html-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>{{ title }} | Get Hired!</title>
+
+  <!-- Bootstrap core CSS  -->
+  <link href="{{ url_for('static', filename='./css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+  <!-- Custom fonts for this template  -->
+  <link href="{{ url_for('static', filename = './css/all.min.css') }}" rel="stylesheet">
+
+
+
+  <link rel="stylesheet" href="{{ url_for('static', filename = './css/simple-line-icons.css') }}">
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename = './css/apex.css') }}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-md navbar-light" style="background-color: transparent !important" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="{{ url_for('home.homepage') }}"><i class="fa fa-home"></i>&nbsp;Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{{ url_for('auth.register') }}"><i class="fa fa-user-edit"></i>&nbsp;Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{{ url_for('auth.login') }}"><i class="fa fa-user-lock"></i>&nbsp;Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact"><i class="fa fa-phone"></i>&nbsp;Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-lg-7 my-auto">
+          <div class="header-content mx-auto">
+            <h4 class="mb-5 ml-5 mt-5 text-center text-light" style="background: rgba(0,0,0,0.7); padding: 15px; border-radius: 10px;">New
+              Age is
+              an
+              app landing page
+              that will help
+              you beautifully showcase your
+              new mobile
+              app, or anything else!</h4>
+          </div>
+        </div>
+        <div class="col-lg-5 my-auto">
+          <div class="device-container">
+            <div class="device-mockup iphone6_plus portrait white">
+              <div class="device">
+                <div class="screen">
+                  <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+
+                </div>
+                <div class="button">
+                  <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <footer>
+    <div class="container">
+      <p>&copy; Your Website 2018. All Rights Reserved.</p>
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a href="#">Privacy</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">Terms</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">FAQ</a>
+        </li>
+      </ul>
+      <div>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a href="#"><i class="fab fa-facebook"></i>&nbsp;Facebook</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#"><i class="fab fa-whatsapp"></i>&nbsp;Whatsapp</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#"><i class="fab fa-twitter"></i>&nbsp;Twitter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ url_for('static', filename = './js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = './js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = './js/all.min.js') }}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{{ url_for('static', filename = './js/jquery.easing.min.js') }}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{{ url_for('static', filename = './js/apex.js') }}"></script>
+
+</body>
+
+</html>
