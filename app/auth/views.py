@@ -8,7 +8,7 @@ from .. import db
 from ..models import User
 
 
-@auth.route('/register', methods=['GET', 'POST'])
+@auth.route('/register/', methods=['GET', 'POST'])
 def register():
     """
     Handle requests to the /register route

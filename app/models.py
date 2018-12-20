@@ -20,15 +20,14 @@ class User(UserMixin, db.Model):
     first_name = db.Column(db.String(50), index=True, nullable=False)
     last_name = db.Column(db.String(50), index=True, nullable=False)
     password_hash = db.Column(db.String(128))
-    image_file = db.Column(db.String(20), nullable=False,
+    image_file = db.Column(db.String(1000), nullable=False,
                            default='default.jpg')
     is_freelancer = db.Column(db.Boolean, default=False)
     is_employer = db.Column(db.Boolean, default=False)
     is_admin = db.Column(db.Boolean, default=False)
-    resume_id = db.Column(db.Integer, db.ForeignKey('resumes.id'))
-    project_id = db.Column(db.Integer, db.ForeignKey('projects.id'))
-    jobpost_id = db.Column(db.Integer, db.ForeignKey('jobposts.id'))
-
+    resume = db.relationship('Resume', backref='author', lazy=True)
+    project = db.relationship('Project', backref='architect', lazy=True)
+    jobpost = db.relationship('JobPost', backref='poster', lazy=True)
     @property
     def password(self):
         """
@@ -71,7 +70,7 @@ class Resume(db.Model):
     tools = db.Column(db.Text, nullable=False)
     experience = db.Column(db.Text)
     skills = db.Column(db.Text)
-    user = db.relationship('User', backref='resume', lazy='dynamic')
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
 
 class Project(db.Model):
@@ -86,7 +85,7 @@ class Project(db.Model):
     tools_used = db.Column(db.Text)
     description = db.Column(db.Text)
     client = db.Column(db.String(100))
-    user = db.relationship('User', backref='project', lazy='dynamic')
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
 
 class JobPost(db.Model):
@@ -100,9 +99,9 @@ class JobPost(db.Model):
     job_title = db.Column(db.String(100), nullable=False)
     job_description = db.Column(db.Text, nullable=False)
     job_requirements = db.Column(db.Text, nullable=False)
-    expected_pay = db.Column(db.Float)
+    expected_pay = db.Column(db.String(150))
     date_posted = db.Column(db.DateTime, nullable=False,
                             default=datetime.utcnow)
     contact_email = db.Column(db.String(150), nullable=False, unique=True)
-    contact_number = db.Column(db.BigInteger, unique=True)
-    user = db.relationship('User', backref='jobpost', lazy='dynamic')
+    contact_number = db.Column(db.String(150), unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)

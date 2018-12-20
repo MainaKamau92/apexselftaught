@@ -1,3 +1,4 @@
+
 {% import "bootstrap/utils.html" as utils %} <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +11,7 @@
     <meta name="author" content="" />
 
     <title>{{ title }}</title>
-
+    {% block links%}
     <!-- Bootstrap core CSS -->
     <link
       href="{{ url_for('static', filename='./css/bootstrap.min.css') }}"
@@ -32,18 +33,14 @@
       href="{{ url_for('static', filename = './css/apex.css') }}"
       rel="stylesheet"
     />
+    {% endblock links%}
   </head>
 
   <body id="page-top">
     {% block navbar %}
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-md navbar-trans" id="mainNav">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="mainNav">
       <div class="container-fluid">
-        <a
-          class="navbar-brand js-scroll-trigger"
-          href="{{ url_for('home.homepage') }}"
-          ><i class="fa fa-home"></i>&nbsp;Home</a
-        >
         <button
           class="navbar-toggler navbar-toggler-right"
           type="button"
@@ -132,7 +129,7 @@
           == False and current_user.is_employer == True %}
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('auth.register') }}"
+              <a class="nav-link" href="{{ url_for('employer.dashboard') }}"
                 ><i class="fa fa-user-edit"></i>&nbsp;Hi
                 {{ current_user.username }}</a
               >
@@ -141,9 +138,16 @@
               <a
                 class="nav-link"
                 href="{{ url_for('employer.dashboard') }}"
-                style="border: 1px solid #fff;"
               >
                 <i class="fa fa-user-tie"></i>&nbsp;Employers-Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="{{ url_for('employer.post_job') }}"
+              >
+                <i class="fa fa-user-tie"></i>&nbsp;Post a JOB</a
               >
             </li>
             <li class="nav-item">
@@ -153,6 +157,11 @@
             </li>
           </ul>
           {% else %}
+          <a
+          class="navbar-brand js-scroll-trigger"
+          href="{{ url_for('home.homepage') }}"
+          ><i class="fa fa-home"></i>&nbsp;Home</a
+        >
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a
@@ -179,10 +188,11 @@
       </div>
     </nav>
     {% endblock navbar %}
-    <div class="text-center" style="width: 40%; margin: auto;">
-      {{ utils.flashed_messages() }}
-    </div>
-    {% block body %} {% endblock body %}
+    <div class="text-center mt-5" style="width: 40%; margin: auto;">
+        {{ utils.flashed_messages() }}
+      </div>
+    {% block body %} 
+    {% endblock body %}
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{ url_for('static', filename = './js/jquery.min.js') }}"></script>

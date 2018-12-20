@@ -1,7 +1,7 @@
 # app/auth/form.py
 
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField, SubmitField, BooleanField, ValidationError
+from wtforms import PasswordField, StringField, SubmitField, BooleanField, ValidationError, SelectField
 from wtforms.validators import Required, Email, EqualTo, Length
 
 from ..models import User

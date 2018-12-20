@@ -8,8 +8,8 @@ class Config:
     """
     DEBUG = False
     CSRF_ENABLED = True
-    SECRET = "8f1318e0d39831e3aab9d1f90abe44"
-    SQLALCHEMY_DATABASE_URI = 'postgresql://joe:mainakamau@localhost/apexdb'
+    SECRET_KEY =  os.getenv('SECRET')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
 
 class DevelopmentConfig(Config):

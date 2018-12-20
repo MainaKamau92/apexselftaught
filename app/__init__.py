@@ -29,7 +29,6 @@ def create_app(config_name):
     app.config.from_object(app_config[config_name])
     app.config.from_pyfile('config.py')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SECRET_KEY'] = "8f1318e0d39831e3aab9d1f90abe44"
     db.init_app(app)
     login_manager.init_app(app)
     login_manager.login_message = "You must be logged in to access this space"

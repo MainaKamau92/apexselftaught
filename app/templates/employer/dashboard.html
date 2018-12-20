@@ -1,33 +1,91 @@
+{% import "bootstrap/wtf.html" as wtf %}
 <!--app/templates/employer/dashboard.html-->
-{% extends "base.html" %}
-{% block body %}
-<header class="masthead">
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-lg-7 my-auto">
-                <div class="header-content mx-auto">
-                    <div class="mb-5 ml-5 mt-5 text-center text-light" style="background: rgba(0,0,0,0.7); padding: 15px; border-radius: 10px;">
-                        <h5 class="display-4">Welcome {{ current_user.last_name }}</h5>
-                        <p class="lead">This is the employers dashboard!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 my-auto">
-                <div class="device-container">
-                    <div class="device-mockup iphone6_plus portrait white">
-                        <div class="device">
-                            <div class="screen">
-                                <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+{% block links %}
+<link
+  href="{{ url_for('static', filename='./css/employer.css') }}"
+  rel="stylesheet"
+/>
+<!-- Bootstrap core CSS -->
+<link
+  href="{{ url_for('static', filename='./css/bootstrap.min.css') }}"
+  rel="stylesheet"
+/>
 
-                            </div>
-                            <div class="button">
-                                <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- Custom fonts for this template -->
+<link
+  href="{{ url_for('static', filename = './css/all.min.css') }}"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename = './css/simple-line-icons.css') }}"
+/>
+
+<!-- Custom styles for this template -->
+<link
+  href="{{ url_for('static', filename = './css/apex.css') }}"
+  rel="stylesheet"
+/>
+{% endblock links%} {% extends "base.html" %} {% block body %}
+<header>
+  <div class="container h-70" style="margin-top: 15px;">
+    <div class="row h-50">
+      <div class="col-lg-5 my-auto">
+        <div class="header-content mx-auto">
+          <div
+            class="mb-5 ml-2 text-center text-dark"
+            style="background: rgba(250,250,250); padding: 15px; border-radius: 10px;"
+          >
+            <p class="lead">You are an Employer</p>
+            <img
+              style="height: 150px; width: 150px;"
+              class="rounded-circle profile-img"
+              src="{{ image_file }}"
+            />
+            <p class="greeting" style="padding-top: 5px;">
+              Welcome {{ current_user.last_name }}
+            </p>
+            <p>{{ current_user.email }}</p>
+            <button
+              onclick="toggle()"
+              class="btn btn-primary"
+              style="margin-bottom: 15px;"
+            >
+              Edit Info
+            </button>
+            <div style="display: none" id="toggleable-form">
+              {{ wtf.quick_form(form, enctype="multipart/form-data", button_map={'submit': 'primary'}) }}
             </div>
+          </div>
         </div>
+      </div>
+      <div class="col-lg-5 my-auto">
+        <div class="device-container">
+          <div class="device-mockup iphone6_plus portrait white">
+            <div class="device">
+              {% for job in jobs %}
+              <div class="screen">
+                <h5>{{ job.poster.username }}</h5>
+              </div>
+              {% endfor %}
+              <div class="button">
+                <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </header>
+<script type="text/javascript">
+  function toggle() {
+    var x = document.getElementById("toggleable-form");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>
 {% endblock body %}
