@@ -1,11 +1,14 @@
+import os
 from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 from app import db, login_manager
 
 
+
+secret = os.getenv('SECRET')
 class User(UserMixin, db.Model):
     """
     Class for creating user tables on db
@@ -28,6 +31,7 @@ class User(UserMixin, db.Model):
     resume = db.relationship('Resume', backref='author', lazy=True)
     project = db.relationship('Project', backref='architect', lazy=True)
     jobpost = db.relationship('JobPost', backref='poster', lazy=True)
+
     @property
     def password(self):
         """
@@ -47,6 +51,19 @@ class User(UserMixin, db.Model):
         Check if hashed password matches actual one
         """
         return check_password_hash(self.password_hash, password)
+
+    def get_reset_token(self, expires_sec=1800):
+        s = Serializer(secret, expires_sec)
+        return s.dumps({'user_id': self.id}).decode('utf-8')
+
+    @staticmethod
+    def verify_reset_token(token):
+        s = Serializer(secret)
+        try:
+            user_id = s.loads(token)['user_id']
+        except:
+            return None
+        return User.query.get(user_id)
 
     def __repr__(self):
         return '<User: {}>'.format(self.username)
@@ -102,6 +119,6 @@ class JobPost(db.Model):
     expected_pay = db.Column(db.String(150))
     date_posted = db.Column(db.DateTime, nullable=False,
                             default=datetime.utcnow)
-    contact_email = db.Column(db.String(150), nullable=False, unique=True)
-    contact_number = db.Column(db.String(150), unique=True)
+    contact_email = db.Column(db.String(150), nullable=False)
+    contact_number = db.Column(db.String(150))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)

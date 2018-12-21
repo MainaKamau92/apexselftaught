@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block links %}
+<link
+  href="{{ url_for('static', filename='./css/403.css') }}"
+  rel="stylesheet"
+/>
+<!-- Bootstrap core CSS -->
+<link
+  href="{{ url_for('static', filename='./css/bootstrap.min.css') }}"
+  rel="stylesheet"
+/>
+
+<!-- Custom fonts for this template -->
+<link
+  href="{{ url_for('static', filename = './css/all.min.css') }}"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename = './css/simple-line-icons.css') }}"
+/>
+
+<!-- Custom styles for this template -->
+<link
+  href="{{ url_for('static', filename = './css/apex.css') }}"
+  rel="stylesheet"
+/>
+{% endblock links%} {% block body %}
+<header class="profile" style="width: 100%">
+  <div class="container h-70" style="margin-top: 15px;">
+    <div class="h-50">
+      <div class="my-auto">
+        <div class="header-content mx-auto">
+          <div
+            class="mb-5 ml-2 text-center text-dark"
+            style="background: rgba(250,250,250); padding: 15px;"
+          >
+            <div id="forbid">
+              <div class="forbid">
+                <div class="forbid-404"><h1>Access Denied!</h1></div>
+              </div>
+              <div class="desc">
+                <h2>403 - You do not have authorization to access this page</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endblock %}
+    </div>
+  </div>
+</header>

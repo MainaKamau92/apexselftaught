@@ -42,6 +42,7 @@
       <div class="container">
         <a
           class="navbar-brand js-scroll-trigger"
+          style="color: #fff;"
           href="{{ url_for('home.homepage') }}"
           ><i class="fa fa-home"></i>&nbsp;Home</a
         >
@@ -73,7 +74,9 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact"
+              <a
+                class="nav-link js-scroll-trigger"
+                href="{{ url_for('home.contact') }}"
                 ><i class="fa fa-phone"></i>&nbsp;Contact</a
               >
             </li>
@@ -87,13 +90,23 @@
         <div class="row h-100">
           <div class="col-lg-7 my-auto">
             <div class="header-content mx-auto">
-              <h4
+              <div
                 class="mb-5 ml-5 mt-5 text-center text-light"
                 style="background: rgba(0,0,0,0.7); padding: 15px; border-radius: 10px;"
               >
-                New Age is an app landing page that will help you beautifully
-                showcase your new mobile app, or anything else!
-              </h4>
+                <h3>Apex freelance project (backstory)</h3>
+
+                <p>
+                  Apex is an idea that aims at creating a site that gives self
+                  taught professionals in the fields of design and software
+                  engineering a chance to get hired by firms without any formal
+                  certification. Itis based of the belief that getting a degree,
+                  diploma and the like however important it may be should not
+                  suffice as reason enough to exercise monopoly over said fields
+                  It's an ambitious project, completely open source and a first
+                  in many respects in the region i'm from.
+                </p>
+              </div>
             </div>
           </div>
           <div class="col-lg-5 my-auto">

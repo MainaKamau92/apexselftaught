@@ -7,6 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap
+from flaskext.markdown import Markdown
+from flask_mail import Mail
 
 # local imports
 
@@ -15,8 +17,8 @@ from instance.config import app_config
 # initialize the db variable
 
 db = SQLAlchemy()
-
 login_manager = LoginManager()
+mail = Mail()
 
 
 def create_app(config_name):
@@ -29,12 +31,15 @@ def create_app(config_name):
     app.config.from_object(app_config[config_name])
     app.config.from_pyfile('config.py')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.url_map.strict_slashes = False
     db.init_app(app)
     login_manager.init_app(app)
     login_manager.login_message = "You must be logged in to access this space"
     login_manager.login_view = "auth.login"
     migrate = Migrate(app, db)
     Bootstrap(app)
+    Markdown(app, auto_escape=True)
+    mail.init_app(app)
 
     from app import models
 
@@ -52,5 +57,8 @@ def create_app(config_name):
 
     from .home import home as home_blueprint
     app.register_blueprint(home_blueprint)
+
+    from .errors import error as error_blueprint
+    app.register_blueprint(error_blueprint)
 
     return app

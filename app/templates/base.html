@@ -12,6 +12,8 @@
 
     <title>{{ title }}</title>
     {% block links%}
+    <!--Google fonts-->
+    <link rel="stylesheet" href="">
     <!-- Bootstrap core CSS -->
     <link
       href="{{ url_for('static', filename='./css/bootstrap.min.css') }}"
@@ -40,7 +42,7 @@
     {% block navbar %}
     <!-- Navigation -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="mainNav">
-      <div class="container-fluid">
+      <div class="container">
         <button
           class="navbar-toggler navbar-toggler-right"
           type="button"
@@ -129,17 +131,19 @@
           == False and current_user.is_employer == True %}
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('employer.dashboard') }}"
-                ><i class="fa fa-user-edit"></i>&nbsp;Hi
-                {{ current_user.username }}</a
+              <a
+                class="nav-link"
+                href="{{ url_for('employer.dashboard') }}"
+              >
+                <i class="fa fa-user-tie"></i>&nbsp;Profile</a
               >
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="{{ url_for('employer.dashboard') }}"
+                href="{{ url_for('employer.job_posts') }}"
               >
-                <i class="fa fa-user-tie"></i>&nbsp;Employers-Dashboard</a
+                <i class="fa fa-industry"></i>&nbsp;Jobs</a
               >
             </li>
             <li class="nav-item">
@@ -147,18 +151,19 @@
                 class="nav-link"
                 href="{{ url_for('employer.post_job') }}"
               >
-                <i class="fa fa-user-tie"></i>&nbsp;Post a JOB</a
+                <i class="fa fa-plus-square"></i>&nbsp;Post a JOB</a
               >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('auth.logout') }}"
-                ><i class="fa fa-user-lock"></i>&nbsp;Logout</a
+                ><i class="fa fa-sign-out-alt"></i>&nbsp;Logout</a
               >
             </li>
           </ul>
           {% else %}
           <a
           class="navbar-brand js-scroll-trigger"
+          style="color: #fff;"
           href="{{ url_for('home.homepage') }}"
           ><i class="fa fa-home"></i>&nbsp;Home</a
         >
@@ -178,7 +183,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact"
+              <a class="nav-link js-scroll-trigger" href="{{ url_for('home.contact')}}"
                 ><i class="fa fa-phone"></i>&nbsp;Contact</a
               >
             </li>

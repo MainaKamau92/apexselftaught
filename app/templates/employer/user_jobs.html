@@ -1,6 +1,8 @@
 {% extends "base.html" %} {% block title%}{{ title }}{% endblock title%} {%block
 body %}
-<h2 class="container text-center mb-5"><u>Pending Jobs</u></h2>
+<h2 class="container text-center mb-5">
+  <u>Jobs by: {{ user.username }} ({{ jobs.total }})</u>
+</h2>
 {% for job in jobs.items %}
 <article class="media body-section container">
   <img
@@ -19,7 +21,11 @@ body %}
     </h2>
     <p class="article-content">{{ job.job_description | truncate }}</p>
     <div class="article-metadata">
-      <a class="mr-2" href="{{ url_for('employer.user_jobs', username=job.poster.username) }}">{{ job.poster.username }}</a>
+      <a
+        class="mr-2"
+        href="{{ url_for('employer.user_jobs', username=job.poster.username) }}"
+        >{{ job.poster.username }}</a
+      >
       <small class="text-muted">{{
         job.date_posted.strftime("%d-%m-%Y")
       }}</small>
@@ -32,13 +38,13 @@ body %}
   right_current=2) %} {% if page_num %} {% if jobs.page == page_num %}
   <a
     class="btn btn-info mb-4"
-    href="{{ url_for('employer.job_posts', page=page_num) }}"
+    href="{{ url_for('employer.user_jobs', username=user.username, page=page_num) }}"
     >{{ page_num }}</a
   >
   {% else %}
   <a
     class="btn btn-outline-info mb-4"
-    href="{{ url_for('employer.job_posts', page=page_num) }}"
+    href="{{ url_for('employer.user_jobs', username=user.username, page=page_num) }}"
     >{{ page_num }}</a
   >
   {% endif %} {% else %} ...... {% endif %} {% endfor %}

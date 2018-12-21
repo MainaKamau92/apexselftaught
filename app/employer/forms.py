@@ -42,10 +42,10 @@ class PostJobForm(FlaskForm):
     """
     job_title = StringField('Job Title', validators=[Required()],
                             render_kw={'placeholder': 'Software Developer'})
-    job_description = StringField('Job Description', validators=[Required()],
-                                  render_kw={'placeholder': 'job description....'})
+    job_description = TextAreaField('Job Description', validators=[Required()],
+                                    render_kw={'rows': '14', 'placeholder': "Use the '*' before you start the sentence to make a list"})
     job_requirements = TextAreaField('Job Requirements', validators=[Required()],
-                                     render_kw={'rows': '14', 'placeholder': 'job requirements....'})
+                                     render_kw={'rows': '14', 'placeholder': "Use the '*' before you start the sentence to make a list"})
     expected_pay = StringField('Expected Pay(All amounts are in Kshs)', validators=[Required()],
                                render_kw={'placeholder': '70,000'})
     contact_email = StringField('Email', validators=[Required(), Email()],

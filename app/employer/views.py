@@ -1,6 +1,6 @@
 # app/employer/views.py
 
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, abort, url_for, flash, redirect, request
 from flask_login import login_required, current_user
 import secrets
 from PIL import Image
@@ -9,7 +9,13 @@ from . import employer
 from .. import db
 from .. import create_app
 from .forms import UpdateForm, PostJobForm
-from ..models import JobPost
+from ..models import JobPost, User
+from datetime import datetime
+
+def date():
+    now = datetime.now()
+    return now
+
 
 
 def save_picture(form_picture):
@@ -38,7 +44,11 @@ def dashboard():
     """
     Render the homepage template on the / route
     """
-    jobs = JobPost.query.all()
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=current_user.username).first_or_404()
+    jobs = JobPost.query.filter_by(poster=user)\
+        .order_by(JobPost.date_posted.desc()).\
+        paginate(page=page, per_page=5)
     form = UpdateForm()
     if form.validate_on_submit():
         if form.picture.data:
@@ -59,7 +69,7 @@ def dashboard():
     image_file = url_for('static',
                          filename='profile_pics/' + current_user.image_file)
     return render_template('employer/dashboard.html', title='Employer',
-                           image_file=image_file, form=form, jobs=jobs)
+                           image_file=image_file, form=form, jobs=jobs, date=date())
 
 
 @employer.route('/employer/post/new', methods=['GET', 'POST'])
@@ -85,13 +95,74 @@ def post_job():
 
         # redirect to employers dashboard
 
-        return redirect(url_for('employer.dashboard'))
+        return redirect(url_for('employer.job_posts'))
     # load job posting form
     return render_template('employer/post_job.html', title='New Job', form=form)
 
 
-# @employer.route('/employer/jobs', methods=['GET', 'POST'])
-# @login_required
-# def job_posts():
-   
-#     return render_template('employer/dashboard.html', jobs=jobs)
+@employer.route('/jobs', methods=['GET', 'POST'])
+@login_required
+def job_posts():
+    page = request.args.get('page', 1, type=int)
+    jobs = JobPost.query.order_by(
+        JobPost.date_posted.desc()).paginate(page=page, per_page=5)
+    return render_template('employer/jobs.html', jobs=jobs, title="Apex | Jobs")
+
+
+@employer.route('/employer/jobs/<int:job_id>')
+@login_required
+def job(job_id):
+    job = JobPost.query.get_or_404(job_id)
+    return render_template('employer/job.html', title=job.job_title, job=job)
+
+
+@employer.route('/employer/jobs/<int:job_id>/update', methods=['GET', 'POST'])
+@login_required
+def update_job(job_id):
+    job = JobPost.query.get_or_404(job_id)
+    if job.poster != current_user:
+        abort(403)
+    form = PostJobForm()
+    if form.validate_on_submit():
+        job.job_title = form.job_title.data
+        job.job_description = form.job_description.data
+        job.job_requirements = form.job_requirements.data
+        job.expected_pay = form.expected_pay.data
+        job.contact_email = form.contact_email.data
+        job.contact_number = form.contact_number.data
+        db.session.commit()
+        flash(f'Your Job has been updated', 'success')
+        return redirect(url_for('employer.job', job_id=job.id))
+    elif request.method == 'GET':
+        form.job_title.data = job.job_title
+        form.job_description.data = job.job_description
+        form.job_requirements.data = job.job_requirements
+        form.expected_pay.data = job.expected_pay
+        form.contact_email.data = job.contact_email
+        form.contact_number.data = job.contact_number
+
+    return render_template('employer/post_job.html', title='Update Job', form=form)
+
+
+@employer.route('/employer/jobs/<int:job_id>/delete', methods=['POST'])
+@login_required
+def delete_job(job_id):
+    job = JobPost.query.get_or_404(job_id)
+    if job.poster != current_user:
+        abort(403)
+    db.session.delete(job)
+    db.session.commit()
+    flash(f'Your Job has been deleted', 'success')
+    return redirect(url_for('employer.job_posts'))
+
+
+@employer.route('/jobs/<username>', methods=['GET', 'POST'])
+@login_required
+def user_jobs(username):
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    jobs = JobPost.query.filter_by(poster=user)\
+        .order_by(JobPost.date_posted.desc()).\
+        paginate(page=page, per_page=5)
+    return render_template('employer/user_jobs.html',
+                           jobs=jobs, user=user, title="Apex | Jobs")

@@ -8,8 +8,14 @@ class Config:
     """
     DEBUG = False
     CSRF_ENABLED = True
-    SECRET_KEY =  os.getenv('SECRET')
+    SECRET_KEY = os.getenv('SECRET')
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
+    MAIL_SERVER = 'smtp.gmail.com'
+    MAIL_PORT = 465
+    MAIL_USE_SSL = True
+    MAIL_USE_TLS = False
+    MAIL_USERNAME = os.getenv('EMAIL_USER')
+    MAIL_PASSWORD = os.getenv('EMAIL_PASS')
 
 
 class DevelopmentConfig(Config):

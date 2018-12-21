@@ -1,3 +1,5 @@
+@import url("https://fonts.google.com/specimen/Muli?selection.family=Muli");
+@import url("https://fonts.google.com/specimen/Catamaran?selection.family=Catamaran");
 html,
 body {
   width: 100%;
@@ -94,8 +96,8 @@ section h2 {
 }
 
 #mainNav .navbar-nav > li > a {
-  font-size: 9pt;
-  font-family: "Menlo", "Helvetica", "Arial", "sans-serif";
+  font-size: 12pt;
+  font-family: "Arial", "sans-serif";
   font-weight: 100;
   letter-spacing: 2px;
   text-transform: capitalize;
@@ -178,7 +180,6 @@ header.masthead {
 }
 
 header.masthead .header-content {
-  max-width: 500px;
   margin-bottom: 100px;
   text-align: center;
 }
@@ -259,4 +260,74 @@ footer ul li a.active {
 .nav-link:hover {
   background: #fcbd20;
   color: #000 !important;
+}
+.body-section {
+  margin-top: 15px;
+  border-radius: 5px solid gray;
+  background-color: #fff;
+  padding: 15px 10px 15px 15px;
+  width: 100%;
+}
+.article-img {
+  padding-right: 10px;
+}
+.article-metadata {
+  margin-top: 25px;
+  padding-right: 50px;
+}
+.update-section {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.paginate {
+  margin-top: 15px;
+  width: 50%;
+}
+.profile {
+  margin: auto;
+  width: 40%;
+}
+
+.contact-section {
+  padding: 5rem 0 0;
+}
+
+.contact-section .card {
+  border: 0;
+  border-bottom: 0.25rem solid #64a19d;
+}
+
+.contact-section .card h4 {
+  font-size: 0.8rem;
+  font-family: "Menlo";
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+}
+
+.contact-section .card hr {
+  border-color: #64a19d;
+  border-width: 0.25rem;
+  width: 3rem;
+}
+
+.contact-section .social {
+  margin-top: 10rem;
+}
+
+.contact-section .social a {
+  text-align: center;
+  height: 3rem;
+  width: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 100%;
+  line-height: 3rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-section .social a:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-section .social a:active {
+  color: #fff;
 }

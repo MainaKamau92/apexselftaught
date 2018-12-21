@@ -21,3 +21,7 @@ def admin_dashboard():
     if not current_user.is_admin:
         abort(403)
     return render_template('home/admin_dashboard.html', title='Admin Dashboard')
+
+@home.route('/contact')
+def contact():
+    return render_template('contactus/contact_us.html', title='Contact Us')

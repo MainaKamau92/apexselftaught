@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block links %}
+<link
+  href="{{ url_for('static', filename='./css/404.css') }}"
+  rel="stylesheet"
+/>
+<!-- Bootstrap core CSS -->
+<link
+  href="{{ url_for('static', filename='./css/bootstrap.min.css') }}"
+  rel="stylesheet"
+/>
+
+<!-- Custom fonts for this template -->
+<link
+  href="{{ url_for('static', filename = './css/all.min.css') }}"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename = './css/simple-line-icons.css') }}"
+/>
+
+<!-- Custom styles for this template -->
+<link
+  href="{{ url_for('static', filename = './css/apex.css') }}"
+  rel="stylesheet"
+/>
+{% endblock links%} {% block body %}
+<header class="profile" style="width: 100%">
+  <div class="container h-70" style="margin-top: 15px;">
+    <div class="h-50">
+      <div class="my-auto">
+        <div class="header-content mx-auto">
+          <div
+            class="mb-5 ml-2 text-center text-dark"
+            style="background: rgba(250,250,250); padding: 15px;"
+          >
+            <div id="notfound">
+              <div class="notfound">
+                <div class="notfound-404"><h1>500</h1></div>
+                <h2>We are experiencing some trouble. Try again later!</h2>
+                <a href="{{ url_for('home.homepage') }}">Go TO Homepage</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endblock %}
+    </div>
+  </div>
+</header>
