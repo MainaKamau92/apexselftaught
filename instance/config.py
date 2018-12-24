@@ -30,7 +30,7 @@ class TestingConfig(Config):
     Testing Configurations, with a separate test database
     """
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:12345@localhost/test_db'
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_TEST_URL')
     DEBUG = True
 
 

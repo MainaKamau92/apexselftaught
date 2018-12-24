@@ -12,10 +12,10 @@ from .forms import UpdateForm, PostJobForm
 from ..models import JobPost, User
 from datetime import datetime
 
+
 def date():
     now = datetime.now()
     return now
-
 
 
 def save_picture(form_picture):
@@ -31,7 +31,7 @@ def save_picture(form_picture):
     pic_fn = random_hex + pic_ext
     # path to picture from the root to the profile_pics folder
     pic_path = os.path.join(app.root_path, 'static/profile_pics', pic_fn)
-    output_size = (128, 128)
+    output_size = (250, 250)
     img = Image.open(form_picture)
     img.thumbnail(output_size)
     img.save(pic_path)  # save the picture path to the file system

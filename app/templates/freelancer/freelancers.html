@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block title%}{{ title }}{% endblock title%} {%block
+body %}
+<h2 class="container text-center mb-5"><u>Freelancers</u></h2>
+{% for freelancer in freelancers.items %}
+<article class="media body-section container">
+  <img
+    src="{{ url_for('static', filename='profile_pics/' + freelancer.image_file )}}"
+    alt="Profile picture"
+    class="article-img rounded-circle"
+    style="height: 90px; width: 100px;"
+  />
+
+  <div class="media-body">
+    <h2>
+      <a class="article-title" href="#">{{ freelancer.last_name }}</a>
+    </h2>
+    <p class="article-content">{{ freelancer.first_name | truncate }}</p>
+    <div class="article-metadata">
+      <a
+        class="mr-2"
+        href="{{ url_for('freelancer.get_freelancer', freelancer_id=freelancer.id) }}"
+        >{{ freelancer.username }}</a
+      >
+    </div>
+  </div>
+</article>
+{% endfor %}
+<div class="container paginate">
+  {% for page_num in freelancers.iter_pages(left_edge=1, right_edge=1,
+  left_current=1, right_current=2) %} {% if page_num %} {% if freelancers.page
+  == page_num %}
+  <a
+    class="btn btn-info mb-4"
+    href="{{ url_for('freelancer.freelancers', page=page_num) }}"
+    >{{ page_num }}</a
+  >
+  {% else %}
+  <a
+    class="btn btn-outline-info mb-4"
+    href="{{ url_for('freelancer.freelancers', page=page_num) }}"
+    >{{ page_num }}</a
+  >
+  {% endif %} {% else %} ...... {% endif %} {% endfor %}
+</div>
+
+{% endblock body %}

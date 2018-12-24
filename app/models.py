@@ -24,7 +24,7 @@ class User(UserMixin, db.Model):
     last_name = db.Column(db.String(50), index=True, nullable=False)
     password_hash = db.Column(db.String(128))
     image_file = db.Column(db.String(1000), nullable=False,
-                           default='default.jpg')
+                           default='default.png')
     is_freelancer = db.Column(db.Boolean, default=False)
     is_employer = db.Column(db.Boolean, default=False)
     is_admin = db.Column(db.Boolean, default=False)
@@ -102,6 +102,7 @@ class Project(db.Model):
     tools_used = db.Column(db.Text)
     description = db.Column(db.Text)
     client = db.Column(db.String(100))
+    url_link = db.Column(db.String(500))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
 

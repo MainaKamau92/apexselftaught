@@ -59,20 +59,40 @@
           True and current_user.is_employer == False %}
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('auth.register') }}"
-                ><i class="fa fa-user-edit"></i>&nbsp;Hi
-                {{ current_user.username }}</a
+              <a
+                class="nav-link"
+                href="{{ url_for('freelancer.post_project') }}"
+              >
+                <i class="fa fa-plus-square"></i>&nbsp;Add a project</a
               >
             </li>
             <li class="nav-item">
+              {% if current_user.resume %}
+                {% for res in resume %}
+              <a
+                class="nav-link"
+                href="{{ url_for('freelancer.update_resume', res_id=res.id ) }}"
+              >
+                <i class="fa fa-plus-square"></i>&nbsp;Edit Resume</a
+              >
+              {% endfor %}
+              {% else %}
+              <a
+                class="nav-link"
+                href="{{ url_for('freelancer.post_resume') }}"
+              >
+                <i class="fa fa-plus-square"></i>&nbsp;Add Resume</a
+              >
+              {% endif %}
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{{ url_for('freelancer.dashboard') }}">
-                <i class="fa fa-user-graduate"></i>&nbsp;Freelancers'
-                Dashboard</a
+                <i class="fa fa-user-graduate"></i>&nbsp;Profile</a
               >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('auth.logout') }}"
-                ><i class="fa fa-user-lock"></i>&nbsp;Logout</a
+                ><i class="fa fa-sign-out-alt"></i>&nbsp;Logout</a
               >
             </li>
           </ul>
@@ -98,7 +118,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('auth.logout') }}"
-                ><i class="fa fa-user-lock"></i>&nbsp;Logout</a
+                ><i class="fa fa-sign-out-alt"></i>&nbsp;Logout</a
               >
             </li>
           </ul>
@@ -123,7 +143,7 @@
               </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('auth.logout') }}"
-                ><i class="fa fa-user-lock"></i>&nbsp;Logout</a
+                ><i class="fa fa-sign-out-alt"></i>&nbsp;Logout</a
               >
             </li>
           </ul>
@@ -179,7 +199,7 @@
               <a
                 class="nav-link js-scroll-trigger"
                 href="{{ url_for('auth.login') }}"
-                ><i class="fa fa-user-lock"></i>&nbsp;Login</a
+                ><i class="fa fa-sign-in-alt"></i>&nbsp;Login</a
               >
             </li>
             <li class="nav-item">
@@ -193,12 +213,12 @@
       </div>
     </nav>
     {% endblock navbar %}
-    <div class="text-center mt-5" style="width: 40%; margin: auto;">
+    <div class="alert alert-{{ category }} text-center mb-2" style="width: 40%; margin: auto;">
         {{ utils.flashed_messages() }}
       </div>
     {% block body %} 
     {% endblock body %}
-
+    {% block script %}
     <!-- Bootstrap core JavaScript -->
     <script src="{{ url_for('static', filename = './js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename = './js/bootstrap.bundle.min.js') }}"></script>
@@ -209,5 +229,6 @@
 
     <!-- Custom scripts for this template -->
     <script src="{{ url_for('static', filename = './js/apex.js') }}"></script>
+    {% endblock script %}
   </body>
 </html>

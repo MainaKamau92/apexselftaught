@@ -44,19 +44,18 @@ def login():
     Log an employee in through the login form
     """
     if current_user.is_authenticated:
-        next_page = request.args.get('next')
         if current_user.is_freelancer == True and current_user.is_employer == False:
             # redirect to the freelancer dashboard page after login
-            return redirect(next_page) if next_page else redirect(url_for('freelancer.dashboard'))
+            return redirect(url_for('freelancer.dashboard'))
         elif current_user.is_employer == True and current_user.is_freelancer == False:
             # redirect to the employer dashboard page after login
-            return redirect(next_page) if next_page else redirect(url_for('employer.dashboard'))
+            return redirect(url_for('employer.dashboard'))
         elif current_user.is_employer and current_user.is_freelancer:
             # redirect to the employer dashboard page after login
-            return redirect(next_page) if next_page else redirect(url_for('employer.dashboard'))
+            return redirect(url_for('employer.dashboard'))
         else:
             # redirect to the admin dashboard
-            return redirect(next_page) if next_page else redirect(url_for('home.admin_dashboard'))
+            return redirect(url_for('home.admin_dashboard'))
 
     form = LoginForm()
     if form.validate_on_submit():
@@ -70,22 +69,22 @@ def login():
             flash(f'Logged In', 'success')
             if user.is_freelancer == True and user.is_employer == False:
                 # redirect to the freelancer dashboard page after login
-                return redirect(next_page) if next_page else redirect(url_for('freelancer.dashboard'))
+                return redirect(url_for('freelancer.dashboard'))
             elif user.is_employer == True and user.is_freelancer == False:
                 # redirect to the employer dashboard page after login
-                return redirect(next_page) if next_page else redirect(url_for('employer.dashboard'))
+                return redirect(url_for('employer.dashboard'))
             elif user.is_employer and user.is_freelancer:
                 # redirect to the employer dashboard page after login
-                return redirect(next_page) if next_page else redirect(url_for('employer.dashboard'))
+                return redirect(url_for('employer.dashboard'))
             else:
                 # redirect to the admin dashboard
-                return redirect(next_page) if next_page else redirect(url_for('home.admin_dashboard'))
+                return redirect(url_for('home.admin_dashboard'))
         flash(f'Invalid Credentials', 'danger')
     # load login template
     return render_template('auth/login.html', form=form, title='Login')
 
 
-@auth.route('/logout')
+@auth.route('/logout/', methods=['GET', 'POST'])
 @login_required
 def logout():
     """

@@ -331,3 +331,33 @@ footer ul li a.active {
 .contact-section .social a:active {
   color: #fff;
 }
+
+.main {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 0 !important;
+}
+.resume-body {
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.resume-body h3 {
+  text-decoration: underline;
+  font-size: 15pt !important;
+}
+
+.resume-body p,
+li,
+h4 {
+  font-size: 10pt !important;
+}
+.resume h2 {
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.edit {
+  float: right;
+  font-size: 12pt;
+}
