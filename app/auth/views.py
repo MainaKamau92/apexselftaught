@@ -55,7 +55,7 @@ def login():
             return redirect(url_for('employer.dashboard'))
         else:
             # redirect to the admin dashboard
-            return redirect(url_for('home.admin_dashboard'))
+            return redirect(url_for('admin.admin_dashboard'))
 
     form = LoginForm()
     if form.validate_on_submit():
@@ -78,7 +78,7 @@ def login():
                 return redirect(url_for('employer.dashboard'))
             else:
                 # redirect to the admin dashboard
-                return redirect(url_for('home.admin_dashboard'))
+                return redirect(url_for('admin.admin_dashboard'))
         flash(f'Invalid Credentials', 'danger')
     # load login template
     return render_template('auth/login.html', form=form, title='Login')
@@ -128,7 +128,7 @@ def request_reset():
             return redirect(next_page) if next_page else redirect(url_for('employer.dashboard'))
         else:
             # redirect to the admin dashboard
-            return redirect(next_page) if next_page else redirect(url_for('home.admin_dashboard'))
+            return redirect(next_page) if next_page else redirect(url_for('admin.admin_dashboard'))
     form = RequestResetForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -153,7 +153,7 @@ def reset_password(token):
             return redirect(next_page) if next_page else redirect(url_for('employer.dashboard'))
         else:
             # redirect to the admin dashboard
-            return redirect(next_page) if next_page else redirect(url_for('home.admin_dashboard'))
+            return redirect(next_page) if next_page else redirect(url_for('admin.admin_dashboard'))
 
     user = User.verify_reset_token(token)
 

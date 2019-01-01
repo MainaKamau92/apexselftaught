@@ -1,32 +1,38 @@
-{% extends "base.html" %} {% block title%}{{ title }}{% endblock title%} {%block
-body %}
+{% extends "base.html" %}
+ {% block title%}{{ title }}{% endblock title%} 
+ {%block body %}
 <h2 class="container text-center mb-5"><u>Pending Jobs</u></h2>
-{% for job in jobs.items %}
-<article class="media body-section container">
-  <img
-    src="{{ url_for('static', filename='profile_pics/' + job.poster.image_file )}}"
-    alt="Profile picture"
-    class="article-img rounded-circle"
-    style="height: 90px; width: 100px;"
-  />
-  <div class="media-body">
-    <h2>
-      <a
-        class="article-title"
-        href="{{ url_for('employer.job', job_id=job.id)}}"
-        >{{ job.job_title }}</a
-      >
-    </h2>
-    <p class="article-content">{{ job.job_description | truncate }}</p>
-    <div class="article-metadata">
-      <a class="mr-2" href="{{ url_for('employer.user_jobs', username=job.poster.username) }}">{{ job.poster.username }}</a>
-      <small class="text-muted">{{
-        job.date_posted.strftime("%d-%m-%Y")
-      }}</small>
-    </div>
-  </div>
-</article>
-{% endfor %}
+{% if jobs.items %}
+       
+      {% for job in jobs.items %}
+      <article class="media body-section container">
+        <img
+          src="{{ url_for('static', filename='profile_pics/' + job.poster.image_file )}}"
+          alt="Profile picture"
+          class="article-img rounded-circle"
+          style="height: 90px; width: 100px;"
+        />
+        <div class="media-body">
+          <h2>
+            <a
+              class="article-title"
+              href="{{ url_for('employer.job', job_id=job.id)}}"
+              >{{ job.job_title }}</a
+            >
+          </h2>
+          <p class="article-content">{{ job.job_description | truncate | markdown }}</p>
+          <div class="article-metadata">
+            <a class="mr-2" href="{{ url_for('employer.user_jobs', username=job.poster.username) }}">{{ job.poster.username }}</a>
+            <small class="text-muted">{{
+              job.date_posted.strftime("%d-%m-%Y")
+            }}</small>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+  {% else %}
+      <h1 class="text-center">There are no Jobs yet, kindly check back later.</h1>
+{% endif %}
 <div class="container paginate">
   {% for page_num in jobs.iter_pages(left_edge=1, right_edge=1, left_current=1,
   right_current=2) %} {% if page_num %} {% if jobs.page == page_num %}

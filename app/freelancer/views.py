@@ -20,6 +20,13 @@ def date():
     now = datetime.now()
     return now
 
+def check_freelancer():
+    """
+    Prevent non freelancers from accessing views by employers from accessing this page
+    """
+
+    if not current_user.is_freelancer:
+        abort(403)
 
 @freelancer.route('/freelancer/dashboard', methods=['GET', 'POST'])
 @login_required
@@ -27,6 +34,7 @@ def dashboard():
     """
     Render the homepage template on the / route
     """
+    check_freelancer()
     user = User.query.filter_by(username=current_user.username).first_or_404()
     resume = Resume.query.filter_by(author=user).all()
     projects = Project.query.filter_by(architect=user).all()
@@ -60,9 +68,11 @@ def post_resume():
     """
     Render the homepage template on the / route
     """
+    check_freelancer()
     form = ResumeForm()
     if form.validate_on_submit():
         resume = Resume(
+            description=form.description.data,
             tools=form.tools.data,
             experience=form.experience.data,
             skills=form.skills.data,
@@ -81,6 +91,7 @@ def post_resume():
 @freelancer.route('/freelancer/<int:res_id>/resume/update', methods=['GET', 'POST'])
 @login_required
 def update_resume(res_id):
+    check_freelancer()
     user = User.query.filter_by(username=current_user.username).first()
     res_id = user.id
     res = Resume.query.filter_by(user_id=res_id).first()
@@ -88,6 +99,7 @@ def update_resume(res_id):
         abort(403)
     form = ResumeForm()
     if form.validate_on_submit():
+        res.description = form.description.data
         res.tools = form.tools.data
         res.experience = form.experience.data
         res.skills = form.skills.data
@@ -95,6 +107,7 @@ def update_resume(res_id):
         flash(f'Your Resume has been updated', 'success')
         return redirect(url_for('freelancer.dashboard'))
     elif request.method == 'GET':
+        form.description.data = res.description
         form.tools.data = res.tools
         form.experience.data = res.experience
         form.skills.data = res.skills
@@ -108,6 +121,7 @@ def post_project():
     """
     Render the homepage template on the / route
     """
+    check_freelancer()
     form = ProjectForm()
     if form.validate_on_submit():
         resume = Project(
@@ -136,6 +150,7 @@ def project(project_id):
 @freelancer.route('/freelancer/<int:project_id>/project/update', methods=['GET', 'POST'])
 @login_required
 def update_project(project_id):
+    check_freelancer()
     project = Project.query.get_or_404(project_id)
     if project.architect != current_user:
         abort(403)
@@ -160,6 +175,7 @@ def update_project(project_id):
 @freelancer.route('/freelancer/project/<int:project_id>/delete', methods=['POST'])
 @login_required
 def delete_project(project_id):
+    check_freelancer()
     project = Project.query.get_or_404(project_id)
     if project.architect != current_user:
         abort(403)
@@ -172,13 +188,17 @@ def delete_project(project_id):
 @login_required
 def freelancers():
     page = request.args.get('page', 1, type=int)
-    freelancers = User.query.order_by(
+    freelancers = User.query.filter_by(is_freelancer=True).order_by(
         User.id.desc()).paginate(page=page, per_page=5)
-    return render_template('freelancer/freelancers.html', freelancers=freelancers, title="Apex | Freelancers")
+    resumes = Resume.query.all()
+    return render_template('freelancer/freelancers.html', resumes=resumes, freelancers=freelancers, title="Apex | Freelancers")
 
 
 @freelancer.route('/freelancers/<int:freelancer_id>')
 @login_required
 def get_freelancer(freelancer_id):
-    freelancer = User.query.get_or_404(freelancer_id)
-    return render_template('freelancer/freelancer.html', title=freelancer.job_title, freelancer=freelancer)
+    user = User.query.filter_by(id=freelancer_id).first()
+    res_by_id = Resume.query.filter_by(user_id=freelancer_id).first()
+    proj_by_id = Project.query.filter_by(architect=user).all()
+    return render_template('freelancer/freelancer.html',res_by_id=res_by_id,
+                            proj_by_id=proj_by_id, title="Freelancer")

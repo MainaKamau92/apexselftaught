@@ -67,6 +67,22 @@
               >
             </li>
             <li class="nav-item">
+              <a
+                class="nav-link"
+                href="{{ url_for('freelancer.freelancers') }}"
+              >
+                <i class="fa fa-user-friends"></i>&nbsp;Job Seekers</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="{{ url_for('employer.job_posts') }}"
+              >
+                <i class="fa fa-industry"></i>&nbsp;Jobs</a
+              >
+            </li>
+            <li class="nav-item">
               {% if current_user.resume %}
                 {% for res in resume %}
               <a
@@ -125,7 +141,7 @@
           {% elif current_user.is_authenticated and current_user.is_admin %}
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('auth.register') }}"
+              <a class="nav-link" href="{{ url_for('admin.admin_dashboard') }}"
                 ><i class="fa fa-user-edit"></i>&nbsp;Hi
                 {{ current_user.username }}</a
               >
@@ -135,9 +151,9 @@
                     <i class="fa fa-user-shield"></i>&nbsp;Admins' Dashboard</a>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color:rgba(0,0,0,0.7); width: 200px;">
-                    <a class="nav-link" href="{{ url_for('home.admin_dashboard') }}">
+                    <a class="nav-link" href="{{ url_for('admin.employers') }}">
                         <i class="fa fa-user-tie"></i>&nbsp;Employers</a>
-                      <a class="nav-link" href="{{ url_for('home.admin_dashboard') }}">
+                      <a class="nav-link" href="{{ url_for('admin.freelancers') }}">
                         <i class="fa fa-user-graduate"></i>&nbsp;Freelancers</a>
                 </div>
               </li>
@@ -172,6 +188,14 @@
                 href="{{ url_for('employer.post_job') }}"
               >
                 <i class="fa fa-plus-square"></i>&nbsp;Post a JOB</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="{{ url_for('freelancer.freelancers') }}"
+              >
+                <i class="fa fa-user-friends"></i>&nbsp;Job Seekers</a
               >
             </li>
             <li class="nav-item">

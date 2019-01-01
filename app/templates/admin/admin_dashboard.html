@@ -1,0 +1,84 @@
+<!-- app/templates/home/admin_dashboard.html-->
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock title %}
+{% block body %}
+    <div class="container">
+        <table class="table table-striped table-bordered ">
+                <thead>
+                    <tr>
+                        <th width="15%">Email</th>
+                        <th width="15%">Username</th>
+                        <th width="15%">First Name</th>
+                        <th width="15%">Last Name</th>
+                        <th width="10%">Freelancer</th>
+                        <th width="10%">Employer</th>
+                        <th width="10%">Admin</th>
+                        <th width="15%">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.last_name }}</td>
+                            <td>{{ user.is_freelancer }}</td>
+                            <td>{{ user.is_employer }}</td>
+                            <td>{{ user.is_admin }}</td>
+                            <td>
+                                    <button
+                                    type="button"
+                                    class="btn btn-danger btn-sm m-1"
+                                    data-toggle="modal"
+                                    data-target="#deleteModal"
+                                  >
+                                    Delete Job
+                                  </button>
+                                <!--Modal-->
+
+                                    <div
+                                    class="modal fade"
+                                    id="deleteModal"
+                                    tabindex="-1"
+                                    role="dialog"
+                                    aria-labelledby="deleteModalLabel"
+                                    aria-hidden="true"
+                                    >
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel">Modal Title</h5>
+                                            <button
+                                            type="button"
+                                            class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close"
+                                            >
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">Are you sure you want to delete this job?</div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <form
+                                            action="{{ url_for('admin.delete_user', id=user.id) }}"
+                                            method="POST"
+                                            >
+                                            <input type="submit" class="btn btn-danger" value="Delete" />
+                                            </form>
+                                            <!-- <button class="btn btn-danger">Delete</button> -->
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+
+       
+
+{% endblock body %}

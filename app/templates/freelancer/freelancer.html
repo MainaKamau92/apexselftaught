@@ -1,0 +1,59 @@
+{% extends "base.html" %} {% block body %}
+<article class="media body-section container mb-5">
+  <img
+    style="height: 90px; width: 100px;"
+    src="{{ url_for('static', filename='profile_pics/' + res_by_id.author.image_file )}}"
+    alt="Profile picture"
+    class="article-img rounded-circle"
+  />
+  <div class="media-body" style="margin-top: 10px;">
+    <h2 class="article-title">{{ res_by_id.author.first_name }} {{ res_by_id.author.last_name }}</h2>
+
+    <div class="article-metadata">
+      <h5 style="text-decoration: underline;">
+        <strong>{{ res_by_id.author.last_name }}'s Bio</strong>
+      </h5>
+      <p class="article-content">{{ res_by_id.description | markdown }}</p>
+
+      <h5 style="text-decoration: underline;">
+        <strong>Tools Used</strong>
+      </h5>
+      <p class="article-content">{{ res_by_id.tools | markdown }}</p>
+
+      <h5 style="text-decoration: underline;">
+        <strong>Experience</strong>
+      </h5>
+      <p class="article-content">{{ res_by_id.experience | markdown }}</p>
+
+      <h5 style="text-decoration: underline;">
+        <strong>Skilled in</strong>
+      </h5>
+      <p class="article-content">{{ res_by_id.skills | markdown }}</p>
+    </div>
+
+    <div class="article-metadata">
+        <h3>Projects</h3>
+        {% if proj_by_id %}
+            {% for project in proj_by_id %}
+            <div class="project-body">
+                <a
+                    href="{{ url_for('freelancer.project', project_id=project.id) }}"
+                    >{{ project.title | markdown }}</a
+                >
+                <p>{{ project.tools_used | markdown | truncate }}</p>
+                <p>{{ project.description | markdown | truncate }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <h1 class="text-center">No Projects Yet</h1>
+            <p class="lead text-center">Click the JigSaw Piece to get started</p>
+            <a href="{{ url_for('freelancer.post_project') }}"><img 
+                style="width: 85px; height: 85px; margin-left: 400px;" 
+                src="{{ url_for('static', filename='./img/jigsaw.png')}}" 
+                alt="jigsaw piece"></a>
+        {% endif %}
+    </div>
+  </div>
+</article>
+
+{% endblock body %}

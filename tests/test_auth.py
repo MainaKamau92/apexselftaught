@@ -1,10 +1,7 @@
 import unittest
 import click
 import os
-from . import TestBase
 from app import create_app, db
-from app.models import User
-from flask import url_for
 
 class TestEmployer(unittest.TestCase):
 

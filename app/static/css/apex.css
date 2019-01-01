@@ -16,33 +16,27 @@ body {
     linear-gradient(#eee 0.1em, transparent 0.1em);
   background-size: 100% 1.2em;
 }
-
 body {
   font-family: "Muli", "Helvetica", "Arial", "sans-serif";
 }
-
 a {
   color: #fdcc52;
   -webkit-transition: all 0.35s;
   transition: all 0.35s;
 }
-
 a:hover,
 a:focus {
   color: #fcbd20;
 }
-
 hr {
   max-width: 100px;
   margin: 25px auto 0;
   border-width: 1px;
   border-color: rgba(34, 34, 34, 0.1);
 }
-
 hr.light {
   border-color: white;
 }
-
 h1,
 h2,
 h3,
@@ -53,21 +47,17 @@ h6 {
   font-weight: 200;
   letter-spacing: 1px;
 }
-
 p {
   font-size: 18px;
   line-height: 1.5;
   margin-bottom: 20px;
 }
-
 section {
   padding: 100px 0;
 }
-
 section h2 {
   font-size: 50px;
 }
-
 #mainNav {
   border-color: rgba(34, 34, 34, 0.05);
   -webkit-transition: all 0.35s;
@@ -76,25 +66,21 @@ section h2 {
   font-weight: 200;
   letter-spacing: 1px;
 }
-
 #mainNav .navbar-brand {
   color: #000;
   font-family: "Catamaran", "Helvetica", "Arial", "sans-serif";
   font-weight: 200;
   letter-spacing: 1px;
 }
-
 #mainNav .navbar-brand:hover,
 #mainNav .navbar-brand:focus {
   color: #fcbd20;
 }
-
 #mainNav .navbar-toggler {
   font-size: 12px;
   padding: 8px 10px;
   color: #000;
 }
-
 #mainNav .navbar-nav > li > a {
   font-size: 12pt;
   font-family: "Arial", "sans-serif";
@@ -103,27 +89,22 @@ section h2 {
   text-transform: capitalize;
   color: #fff !important;
 }
-
 #mainNav .navbar-nav > li > a.active {
   color: #fdcc52 !important;
   background-color: transparent;
 }
-
 #mainNav .navbar-nav > li > a.active:hover {
   background-color: transparent;
 }
-
 #mainNav .navbar-nav > li > a,
 #mainNav .navbar-nav > li > a:focus {
   color: #222222;
 }
-
 #mainNav .navbar-nav > li > a:hover,
 #mainNav .navbar-nav > li > a:focus:hover {
   color: #fdcc52;
   border-radius: 5px;
 }
-
 @media (min-width: 992px) {
   #mainNav {
     border-color: transparent;
@@ -167,7 +148,6 @@ section h2 {
     color: #fdcc52;
   }
 }
-
 header.masthead {
   position: relative;
   width: 100%;
@@ -178,26 +158,21 @@ header.masthead {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 header.masthead .header-content {
   margin-bottom: 100px;
   text-align: center;
 }
-
 header.masthead .header-content h1 {
   font-size: 30px;
 }
-
 header.masthead .device-container {
   max-width: 325px;
   margin-right: auto;
   margin-left: auto;
 }
-
 header.masthead .device-container .screen img {
   border-radius: 3px;
 }
-
 @media (min-width: 992px) {
   header.masthead {
     height: 100vh;
@@ -216,35 +191,29 @@ header.masthead .device-container .screen img {
     max-width: 325px;
   }
 }
-
 footer {
   padding: 25px 0;
   text-align: center;
   color: #fff;
   background-color: #222222;
 }
-
 footer p {
   font-size: 12px;
   margin: 0;
 }
-
 footer ul {
   margin-bottom: 0;
 }
-
 footer ul li a {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.3);
 }
-
 footer ul li a:hover,
 footer ul li a:focus,
 footer ul li a:active,
 footer ul li a.active {
   text-decoration: none;
 }
-
 .center {
   margin: auto;
   width: 40%;
@@ -287,33 +256,27 @@ footer ul li a.active {
   margin: auto;
   width: 40%;
 }
-
 .contact-section {
   padding: 5rem 0 0;
 }
-
 .contact-section .card {
   border: 0;
   border-bottom: 0.25rem solid #64a19d;
 }
-
 .contact-section .card h4 {
   font-size: 0.8rem;
   font-family: "Menlo";
   text-transform: uppercase;
   letter-spacing: 0.15rem;
 }
-
 .contact-section .card hr {
   border-color: #64a19d;
   border-width: 0.25rem;
   width: 3rem;
 }
-
 .contact-section .social {
   margin-top: 10rem;
 }
-
 .contact-section .social a {
   text-align: center;
   height: 3rem;
@@ -323,15 +286,12 @@ footer ul li a.active {
   line-height: 3rem;
   color: rgba(255, 255, 255, 0.3);
 }
-
 .contact-section .social a:hover {
   color: rgba(255, 255, 255, 0.5);
 }
-
 .contact-section .social a:active {
   color: #fff;
 }
-
 .main {
   margin-left: 15px;
   margin-right: 15px;
@@ -341,23 +301,27 @@ footer ul li a.active {
   padding-left: 35px;
   padding-right: 35px;
 }
-
 .resume-body h3 {
   text-decoration: underline;
   font-size: 15pt !important;
 }
-
 .resume-body p,
 li,
 h4 {
-  font-size: 10pt !important;
+  font-size: 12pt !important;
 }
 .resume h2 {
   display: inline-block;
   margin-top: 15px;
 }
-
 .edit {
   float: right;
   font-size: 12pt;
+}
+.table {
+  background-color: #fff;
+}
+.img-jigsaw {
+  height: 150px;
+  margin-left: 420px;
 }

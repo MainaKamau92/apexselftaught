@@ -24,18 +24,18 @@ class User(UserMixin, db.Model):
     last_name = db.Column(db.String(50), index=True, nullable=False)
     password_hash = db.Column(db.String(128))
     image_file = db.Column(db.String(1000), nullable=False,
-                           default='default.png')
+                           default='default.jpg')
     is_freelancer = db.Column(db.Boolean, default=False)
     is_employer = db.Column(db.Boolean, default=False)
     is_admin = db.Column(db.Boolean, default=False)
-    resume = db.relationship('Resume', backref='author', lazy=True)
-    project = db.relationship('Project', backref='architect', lazy=True)
-    jobpost = db.relationship('JobPost', backref='poster', lazy=True)
+    resume = db.relationship('Resume', backref='author', lazy=True, cascade='all, delete-orphan')
+    project = db.relationship('Project', backref='architect', lazy=True, cascade='all, delete-orphan')
+    jobpost = db.relationship('JobPost', backref='poster', lazy=True, cascade='all, delete-orphan')
 
     @property
     def password(self):
         """
-        Prevent password from being accesssed
+        Prevent password from being accessed
         """
         raise AttributeError('password is not a readable attribute')
 
@@ -84,6 +84,7 @@ class Resume(db.Model):
     __tablename__ = 'resumes'
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
+    description = db.Column(db.Text, nullable=False)
     tools = db.Column(db.Text, nullable=False)
     experience = db.Column(db.Text)
     skills = db.Column(db.Text)

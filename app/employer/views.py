@@ -5,6 +5,7 @@ from flask_login import login_required, current_user
 import secrets
 from PIL import Image
 import os
+import click
 from . import employer
 from .. import db
 from .. import create_app
@@ -16,6 +17,15 @@ from datetime import datetime
 def date():
     now = datetime.now()
     return now
+
+def check_employer():
+    """
+    Prevent non employer from accessing views by employers from accessing this page
+    """
+
+    if not current_user.is_employer:
+        abort(403)
+
 
 
 def save_picture(form_picture):
@@ -31,7 +41,7 @@ def save_picture(form_picture):
     pic_fn = random_hex + pic_ext
     # path to picture from the root to the profile_pics folder
     pic_path = os.path.join(app.root_path, 'static/profile_pics', pic_fn)
-    output_size = (250, 250)
+    output_size = (512, 512)
     img = Image.open(form_picture)
     img.thumbnail(output_size)
     img.save(pic_path)  # save the picture path to the file system
@@ -44,6 +54,7 @@ def dashboard():
     """
     Render the homepage template on the / route
     """
+    check_employer()
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=current_user.username).first_or_404()
     jobs = JobPost.query.filter_by(poster=user)\
@@ -78,6 +89,7 @@ def post_job():
     """
     Render the homepage template on the / route
     """
+    check_employer()
     form = PostJobForm()
     if form.validate_on_submit():
         job = JobPost(
@@ -119,6 +131,7 @@ def job(job_id):
 @employer.route('/employer/jobs/<int:job_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_job(job_id):
+    check_employer()
     job = JobPost.query.get_or_404(job_id)
     if job.poster != current_user:
         abort(403)
@@ -147,6 +160,7 @@ def update_job(job_id):
 @employer.route('/employer/jobs/<int:job_id>/delete', methods=['POST'])
 @login_required
 def delete_job(job_id):
+    check_employer()
     job = JobPost.query.get_or_404(job_id)
     if job.poster != current_user:
         abort(403)

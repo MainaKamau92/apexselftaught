@@ -41,6 +41,8 @@ class ResumeForm(FlaskForm):
     """
     Form for users to create new account
     """
+    description = TextAreaField('Describe yourself', validators=[Required()],
+                                render_kw={'rows': '14', 'placeholder': 'Markdown supported'})
     tools = TextAreaField('Tools you use to work', validators=[Required()],
                           render_kw={'rows': '14', 'placeholder': 'Software Developer(eg, python language)'})
     experience = TextAreaField("Projects you've done", validators=[Required()],

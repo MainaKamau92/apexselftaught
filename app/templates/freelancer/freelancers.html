@@ -1,6 +1,7 @@
 {% extends "base.html" %} {% block title%}{{ title }}{% endblock title%} {%block
 body %}
 <h2 class="container text-center mb-5"><u>Freelancers</u></h2>
+{% if freelancers.items %}
 {% for freelancer in freelancers.items %}
 <article class="media body-section container">
   <img
@@ -12,19 +13,21 @@ body %}
 
   <div class="media-body">
     <h2>
-      <a class="article-title" href="#">{{ freelancer.last_name }}</a>
-    </h2>
-    <p class="article-content">{{ freelancer.first_name | truncate }}</p>
-    <div class="article-metadata">
       <a
-        class="mr-2"
+        class="article-title"
         href="{{ url_for('freelancer.get_freelancer', freelancer_id=freelancer.id) }}"
-        >{{ freelancer.username }}</a
+        >{{ freelancer.last_name }}</a
       >
-    </div>
+    </h2>
+    <p class="article-content">{{ freelancer.first_name }}</p>
+    {% for res in resumes %} {% if freelancer.id == res.user_id %}
+    <p>{{ res.description | markdown | truncate }}</p>
+    {% endif %} {% endfor %}
   </div>
 </article>
-{% endfor %}
+{% endfor %} {% else %}
+<h1 class="text-center">No Freelancers Yet.</h1>
+{% endif %}
 <div class="container paginate">
   {% for page_num in freelancers.iter_pages(left_edge=1, right_edge=1,
   left_current=1, right_current=2) %} {% if page_num %} {% if freelancers.page

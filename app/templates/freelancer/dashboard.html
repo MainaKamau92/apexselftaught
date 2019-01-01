@@ -1,7 +1,6 @@
 <!--app/templates/freelancer/dashboard.html-->
-{% extends "base.html" %} {% import "bootstrap/wtf.html" as wtf %} 
-{% block title %}{{ title }}{% endblock %}
-{% block body%}
+{% extends "base.html" %} {% import "bootstrap/wtf.html" as wtf %} {% block
+title %}{{ title }}{% endblock %} {% block body%}
 <main role="main" class="main">
   <div class="row">
     <div class="col-md-4">
@@ -17,7 +16,7 @@
               </small>
               <p class="lead"><u>You are a Job Seeker</u></p>
               <img
-                style="height: 140px; width: 150px;"
+                style="height: 190px; width: 200px;"
                 class="rounded-circle profile-img"
                 src="{{ image_file }}"
               />
@@ -51,55 +50,61 @@
         style="background: rgba(250,250,250); padding: 15px;"
       >
         <div class="bio">
-          {% if resume %}
-                  {% for res in resume %}
-                  <div class="resume container">
-                    <h2 class="text-center"><u>Resume</u></h2>
-                    <h2 class="edit">
-                      <a
-                        href="{{ url_for('freelancer.update_resume', res_id=res.id)}}"
-                        class="btn btn-outline-info btn-sm"
-                        >Edit</a
-                      >
-                    </h2>
-                  </div>
-                  <br />
-                  <div class="resume-body">
-                    <h3>Tools</h3>
-                    <p>{{ res.tools | markdown }}</p>
-                    <h3>Experience</h3>
-                    <p>{{ res.experience | markdown }}</p>
-                    <h3>Skills</h3>
-                    <p>{{ res.skills | markdown }}</p>
-                    <h3>Projects</h3>
-                    {% if projects %}
-                        {% for project in projects %}
-                        <div class="project-body">
-                            <a
-                              href="{{ url_for('freelancer.project', project_id=project.id) }}"
-                              >{{ project.title | markdown }}</a
-                            >
-                          <p>{{ project.tools_used | markdown | truncate }}</p>
-                          <p>{{ project.description | markdown | truncate }}</p>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        <h1 class="text-center">No Projects Yet</h1>
-                        <p class="lead text-center">Click the JigSaw Piece to get started</p>
-                        <a href="{{ url_for('freelancer.post_project') }}"><img 
-                          style="width: 85px; height: 85px; margin-left: 400px;" 
-                          src="{{ url_for('static', filename='./img/jigsaw.png')}}" 
-                          alt="jigsaw piece"></a>
-                    {% endif %}
-                  </div>
-                  {% endfor %}
-            {% else %}
-              <h1 class="text-center">No Resume Yet</h1>
-              <p class="lead text-center">Click the JigSaw Piece to get started</p>
-              <a href="{{ url_for('freelancer.post_resume') }}"><img 
-                style="width: 85px; height: 85px; margin-left: 400px;" 
-                src="{{ url_for('static', filename='./img/jigsaw.png')}}" 
-                alt="jigsaw piece"></a>
+          {% if resume %} {% for res in resume %}
+          <div class="resume container">
+            <h2 class="text-center"><u>Resume</u></h2>
+            <h2 class="edit">
+              <a
+                href="{{ url_for('freelancer.update_resume', res_id=res.id)}}"
+                class="btn btn-outline-info btn-sm"
+                >Edit</a
+              >
+            </h2>
+          </div>
+          <br />
+          <div class="resume-body">
+            <h3>About {{ current_user.last_name }}</h3>
+            <p>{{ res.description | markdown }}</p>
+            <h3>Tools</h3>
+            <p>{{ res.tools | markdown }}</p>
+            <h3>Experience</h3>
+            <p>{{ res.experience | markdown }}</p>
+            <h3>Skills</h3>
+            <p>{{ res.skills | markdown }}</p>
+            <h3>Projects</h3>
+            {% if projects %} {% for project in projects %}
+            <div class="project-body">
+              <a
+                href="{{ url_for('freelancer.project', project_id=project.id) }}"
+                >{{ project.title | markdown }}</a
+              >
+              <p>{{ project.tools_used | markdown | truncate }}</p>
+              <p>{{ project.description | markdown | truncate }}</p>
+            </div>
+            {% endfor %} {% else %}
+            <h1 class="text-center">No Projects Yet</h1>
+            <div class="container">
+              <p class="text-center">Click the JigSaw Piece to get started</p>
+              <a href="{{ url_for('freelancer.post_project') }}"
+                ><img
+                  src="{{ url_for('static', filename='./img/jigsaw.png')}}"
+                  alt="jigsaw piece"
+                  class="img-jigsaw"
+              /></a>
+            </div>
+
+            {% endif %}
+          </div>
+          {% endfor %} {% else %}
+          <h1 class="text-center">No Resume Yet</h1>
+          <p class="lead text-center">Click the JigSaw Piece to get started</p>
+          <a href="{{ url_for('freelancer.post_resume') }}"
+            ><img
+              class="img-jigsaw"
+              src="{{ url_for('static', filename='./img/jigsaw.png')}}"
+              alt="jigsaw piece"
+          /></a>
+
           {% endif %}
         </div>
       </div>
