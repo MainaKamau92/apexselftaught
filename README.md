@@ -43,7 +43,7 @@ For the web application to run locally a few requirements are necessary:
 6. Run the `.bat` file (this file automatically activates the virtual environment, if already activated ignore this file until reactivation is necessitated)
     * `> .bat`
 7. Run the `env.bat` batch file that automatically adds your environments(you might need to edit this file to match some of your local paths)
-    *`> env.bat`
+    * `> env.bat`
 8. Run the `flask run` command to start the application(it should ideally be served on your local address(`127.0.0.1:5000`) on port 5000)
 9. You should get this response on running the application
     ```
