@@ -16,6 +16,7 @@ def register():
     Handle requests to the /register route
     Add an user to the database through the registration form
     """
+    logout_user()
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(first_name=form.first_name.data,
