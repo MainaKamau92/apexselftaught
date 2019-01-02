@@ -103,7 +103,7 @@ def post_job():
         )
         db.session.add(job)
         db.session.commit()
-        flash(f'You have posted a job succesfully', 'success')
+        flash(f'You have posted a job successfully', 'success')
 
         # redirect to employers dashboard
 
@@ -112,7 +112,7 @@ def post_job():
     return render_template('employer/post_job.html', title='New Job', form=form)
 
 
-@employer.route('/jobs', methods=['GET', 'POST'])
+@employer.route('/jobs', methods=['GET'])
 @login_required
 def job_posts():
     page = request.args.get('page', 1, type=int)
