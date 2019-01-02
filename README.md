@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/MainaKamau92/apexselftaught.svg?branch=master)](https://travis-ci.com/MainaKamau92/apexselftaught)
+[![Build Status](https://travis-ci.com/MainaKamau92/apexselftaught.svg?branch=master)](https://travis-ci.com/MainaKamau92/apexselftaught) [![Coverage Status](https://coveralls.io/repos/github/MainaKamau92/apexselftaught/badge.svg?branch=master)](https://coveralls.io/github/MainaKamau92/apexselftaught?branch=master)
 
 # Project Title
 
