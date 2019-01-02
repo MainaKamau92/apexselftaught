@@ -16,4 +16,4 @@ class TestEmployer(TestBase):
         response_load = self.client.get(url_for('employer.job_posts'))
         self.assertEqual(response_load.status_code, 302)
         response = self.client.get('/jobs')
-        self.assert200(response.status_code)
+        self.assertEqual(response.status_code, 200)
