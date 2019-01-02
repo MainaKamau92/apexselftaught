@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/MainaKamau92/apexselftaught.svg?branch=master)](https://travis-ci.com/MainaKamau92/apexselftaught)
 
 # Project Title
 
