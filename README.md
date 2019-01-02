@@ -1,4 +1,8 @@
-[![Build Status](https://travis-ci.com/MainaKamau92/apexselftaught.svg?branch=master)](https://travis-ci.com/MainaKamau92/apexselftaught) [![Coverage Status](https://coveralls.io/repos/github/MainaKamau92/apexselftaught/badge.svg?branch=master)](https://coveralls.io/github/MainaKamau92/apexselftaught?branch=master)
+[![Build Status](https://travis-ci.com/MainaKamau92/apexselftaught.svg?branch=master)](https://travis-ci.com/MainaKamau92/apexselftaught) [![Coverage Status](https://coveralls.io/repos/github/MainaKamau92/apexselftaught/badge.svg?branch=master)](https://coveralls.io/github/MainaKamau92/apexselftaught?branch=master) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php) <a href="http://flask.pocoo.org/"><img
+   src="http://flask.pocoo.org/static/badges/made-with-flask-s.png"
+   border="0"
+   alt="made with Flask"
+   title="made with Flask"></a>
 
 # Project Title
 
