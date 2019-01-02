@@ -1,6 +1,9 @@
 from flask import url_for
 from . import TestBase
 import click
+from flask_login import current_user
+from app.models import User, JobPost
+from app import login_manager
 
 class TestEmployer(TestBase):
 
@@ -17,3 +20,4 @@ class TestEmployer(TestBase):
         self.assertEqual(response_load.status_code, 302)
         response = self.client.get('/jobs')
         self.assertEqual(response.status_code, 302)
+    

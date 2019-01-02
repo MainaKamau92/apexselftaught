@@ -2,7 +2,7 @@ import os
 import unittest
 from flask_testing import TestCase
 from app import create_app, db
-from app.models import *
+
 
 
 class TestBase(TestCase):
@@ -11,7 +11,7 @@ class TestBase(TestCase):
         config_name = 'testing'
         app = create_app(config_name)
         app.config.update(
-            SQLALCHEMY_DATABASE_URI='postgresql://postgres:PASSWORD@localhost/test_db'
+            SQLALCHEMY_DATABASE_URI='postgresql://postgres:mainakamau@localhost/test_db'
         )
         return app
 
