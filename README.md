@@ -16,7 +16,7 @@ in many respects in the region i'm from.
 
 # Prerequisites
 For the web application to run locally a few requirements are necessary:
-* Python 3 or older
+* Python 3 or newer
 * Virtualenv(python)
 * Pip(the python package installer)
 * Postgres database admin ( for managing the database)
