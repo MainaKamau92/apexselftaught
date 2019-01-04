@@ -32,7 +32,7 @@ For the web application to run locally a few requirements are necessary:
 
     * `git clone https://github.com/MainaKamau92/apexselftaught.git`
 
-    >> The command clone a local copy of the project folder on your local machine
+    >> The command clones a local copy of the project folder on your local machine
 2. Navigate into the folder that has been created and create a virtual environment and activate it
     * `cd apexselftaught`
     * `virtualenv venv`
