@@ -3,7 +3,7 @@
 title %}{{ title }}{% endblock %} {% block body%}
 <main role="main" class="main">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-12">
       <div class="container h-100" style="margin-top: 15px;">
         <div class="my-auto">
           <div class="header-content mx-auto">
@@ -14,7 +14,7 @@ title %}{{ title }}{% endblock %} {% block body%}
               <small class="display-5 mb-5 mt-3">
                 {{ date.strftime("%A") }}<br />{{ date.strftime("%x") }}
               </small>
-              <p class="lead"><u>You are a Job Seeker</u></p>
+              <p class="lead jobseeker"><u>You are a Job Seeker</u></p>
               <img
                 style="height: 190px; width: 200px;"
                 class="rounded-circle profile-img"
@@ -25,7 +25,7 @@ title %}{{ title }}{% endblock %} {% block body%}
                 {{ current_user.first_name }} {{ current_user.last_name }}
               </p>
               <h4><u>Email</u></h4>
-              <p>{{ current_user.email }}</p>
+              <p class="email">{{ current_user.email }}</p>
               <p class="display-4"></p>
               <button
                 onclick="toggle()"
@@ -44,7 +44,7 @@ title %}{{ title }}{% endblock %} {% block body%}
     </div>
 
     <!--Right side of the dashboard-->
-    <div class="col-md-7">
+    <div class="col-md-7 col-sm-12">
       <div
         class="content-section mt-3"
         style="background: rgba(250,250,250); padding: 15px;"
@@ -64,7 +64,7 @@ title %}{{ title }}{% endblock %} {% block body%}
           <br />
           <div class="resume-body">
             <h3>About {{ current_user.last_name }}</h3>
-            <p>{{ res.description | markdown }}</p>
+            <p class="about_description">{{ res.description | markdown }}</p>
             <h3>Tools</h3>
             <p>{{ res.tools | markdown }}</p>
             <h3>Experience</h3>
@@ -84,7 +84,7 @@ title %}{{ title }}{% endblock %} {% block body%}
             {% endfor %} {% else %}
             <h1 class="text-center">No Projects Yet</h1>
             <div class="container">
-              <p class="text-center">Click the JigSaw Piece to get started</p>
+              <p class="text-center" id="jigsaw">Click the JigSaw Piece to get started</p>
               <a href="{{ url_for('freelancer.post_project') }}"
                 ><img
                   src="{{ url_for('static', filename='./img/jigsaw.png')}}"
@@ -97,7 +97,7 @@ title %}{{ title }}{% endblock %} {% block body%}
           </div>
           {% endfor %} {% else %}
           <h1 class="text-center">No Resume Yet</h1>
-          <p class="lead text-center">Click the JigSaw Piece to get started</p>
+          <p class="lead text-center" id="jigsaw">Click the JigSaw Piece to get started</p>
           <a href="{{ url_for('freelancer.post_resume') }}"
             ><img
               class="img-jigsaw"

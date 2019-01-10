@@ -325,3 +325,375 @@ h4 {
   height: 150px;
   margin-left: 420px;
 }
+@media (max-width: 760px) {
+  .center input,
+  label,
+  p {
+    width: 300px;
+    margin-left: -80px;
+  }
+  .remember {
+    width: 15px !important;
+    margin-left: 0px !important;
+  }
+  .jobseeker,
+  .greeting,
+  .email {
+    margin-left: 50px;
+    font-size: 12pt !important;
+  }
+  .resume-body p {
+    margin-left: 10px !important;
+    font-size: 10pt !important;
+  }
+  .resume-body h3 {
+    font-size: 12pt !important;
+    margin-left: 6px;
+  }
+  .resume h2 {
+    font-size: 15pt !important;
+  }
+  .resume-form textarea {
+    margin-left: -82px !important;
+    width: 400px !important;
+    font-size: 10pt !important;
+  }
+  .resume-form label {
+    font-size: 15pt !important;
+    text-decoration: underline;
+  }
+  .media-body h2 {
+    font-size: 17pt !important;
+  }
+  .media-body h5 {
+    font-size: 12pt !important;
+  }
+  .media-body p {
+    font-size: 11pt !important;
+    margin-left: 6px;
+  }
+  .media {
+    margin-top: -32px !important;
+  }
+  .project-form textarea {
+    margin-left: -82px !important;
+    width: 400px !important;
+    font-size: 10pt !important;
+  }
+  .project-form label {
+    font-size: 12pt !important;
+    text-decoration: underline;
+  }
+  .article-img {
+    height: 50px !important;
+    width: 60px !important;
+  }
+  .freelancer-body p {
+    font-size: 10pt !important;
+  }
+  .body-section {
+    margin-top: 15px !important;
+    width: 90% !important;
+    padding-bottom: 7px !important;
+    padding-right: 0px !important;
+  }
+  .article-metadata h5 {
+    font-size: 11pt !important;
+  }
+  .article-metadata p {
+    font-size: 10pt !important;
+  }
+  .article-metadata h3 {
+    font-size: 12pt !important;
+    text-decoration: underline;
+  }
+  .employer,
+  .employer-greeting,
+  .employer-email {
+    margin-left: 65px !important;
+    font-size: 12pt !important;
+  }
+  .employer-bio {
+    width: 500px !important;
+    margin-left: -150px !important;
+  }
+  .jobs-posted {
+    margin-left: 65px !important;
+  }
+  .img-jigsaw{
+    margin-left: 100px !important;
+  }
+  #jigsaw{
+    margin-left: 50px !important;
+  }
+}
+@media (max-width: 750px) {
+  .center input,
+  label,
+  p {
+    width: 300px;
+    margin-left: -95px;
+  }
+  .remember {
+    width: 15px !important;
+    margin-left: 0px !important;
+  }
+  .jobseeker,
+  .greeting,
+  .email {
+    margin-left: -5px;
+    font-size: 12pt !important;
+  }
+  .resume-body p {
+    margin-left: -5px;
+    width: 90% !important;
+    font-size: 10pt !important;
+  }
+
+  .resume-body h3 {
+    font-size: 12pt !important;
+    margin-left: -7px;
+  }
+  .resume h2 {
+    font-size: 15pt !important;
+  }
+  .resume-form textarea {
+    margin-left: -100px !important;
+    width: 350px !important;
+    font-size: 10pt !important;
+  }
+  .resume-form {
+    margin-bottom: 15px !important;
+  }
+  .resume-form label {
+    font-size: 15pt !important;
+    text-decoration: underline;
+  }
+  .media-body h2 {
+    font-size: 17pt !important;
+  }
+  .media-body h5 {
+    font-size: 12pt !important;
+  }
+  .media-body p {
+    font-size: 11pt !important;
+    margin-left: 6px;
+  }
+  .media {
+    margin-top: 0px !important;
+    margin-bottom: 15px !important;
+  }
+  .project-form textarea,
+  input {
+    margin-left: -100px !important;
+    width: 350px !important;
+    font-size: 10pt !important;
+  }
+  .project-form {
+    margin-bottom: 15px;
+  }
+  .project-form label {
+    margin-left: -100px !important;
+    font-size: 12pt !important;
+    text-decoration: underline;
+  }
+  .article-img {
+    height: 40px !important;
+    width: 50px !important;
+  }
+  .freelancer-body p {
+    font-size: 10pt !important;
+  }
+  .body-section {
+    margin-top: 15px !important;
+    width: 95% !important;
+    padding-bottom: 7px !important;
+    padding-right: 0px !important;
+  }
+  .article-metadata h5 {
+    font-size: 11pt !important;
+  }
+  .article-metadata p {
+    font-size: 10pt !important;
+    width: 95% !important;
+  }
+  .article-metadata {
+    margin-bottom: 7px !important;
+  }
+  .article-metadata h3 {
+    font-size: 12pt !important;
+    text-decoration: underline;
+  }
+  .employer,
+  .employer-greeting,
+  .employer-email {
+    margin-left: 65px !important;
+    font-size: 12pt !important;
+  }
+  .employer-bio {
+    width: 500px !important;
+    margin-left: -150px !important;
+  }
+  .jobs-posted {
+    margin-left: 65px !important;
+  }
+  #toggleable-form input {
+    width: 340px !important;
+    margin-left: 30px !important;
+  }
+  #toggleable-form label {
+    width: 300px !important;
+    margin-left: 20px !important;
+  }
+  #toggleable-form .btn {
+    width: 40% !important;
+    margin-left: 10px !important;
+  }
+  .job-metadata p {
+    width: 95% !important;
+  }
+  .job-form textarea {
+    margin-left: -100px !important;
+    width: 350px !important;
+    font-size: 10pt !important;
+  }
+  .job-form {
+    margin-bottom: 15px;
+  }
+  .job-form label {
+    margin-left: -100px !important;
+    font-size: 12pt !important;
+    text-decoration: underline;
+  }
+  .btn-modal {
+    width: 65px !important;
+    height: 38px !important;
+    margin-left: -155px !important;
+    font-size: 12pt !important;
+    padding: 2px !important;
+  }
+  .alert {
+    width: 100% !important;
+  }
+  .img-jigsaw{
+    margin-left: 100px !important;
+  }
+  #jigsaw{
+    margin-left: 50px !important;
+  }
+}
+
+@media (max-width: 667px) {
+  .center input,
+  label,
+  p {
+    width: 300px;
+    margin-left: -95px;
+  }
+  .remember {
+    width: 15px !important;
+    margin-left: 0px !important;
+  }
+  .jobseeker,
+  .greeting,
+  .email {
+    margin-left: 30px !important;
+    font-size: 12pt !important;
+  }
+  .resume-body p {
+    margin-left: 10px !important;
+    font-size: 10pt !important;
+  }
+  .resume-body h3 {
+    font-size: 12pt !important;
+    margin-left: 6px;
+  }
+  .resume h2 {
+    font-size: 15pt !important;
+  }
+  .resume-form textarea {
+    margin-left: -100px !important;
+    width: 400px !important;
+    font-size: 10pt !important;
+  }
+  .resume-form label {
+    font-size: 15pt !important;
+    text-decoration: underline;
+    margin-left: -100px !important;
+  }
+  .media-body h2 {
+    font-size: 17pt !important;
+  }
+  .media-body h5 {
+    font-size: 12pt !important;
+  }
+  .media-body p {
+    font-size: 11pt !important;
+    margin-left: 6px;
+  }
+  .media {
+    margin-top: -32px !important;
+  }
+  .project-form textarea {
+    margin-left: -100px !important;
+    width: 400px !important;
+    font-size: 10pt !important;
+  }
+  .project-form label {
+    font-size: 12pt !important;
+    text-decoration: underline;
+    margin-left: -100px !important;
+  }
+  .article-img {
+    height: 50px !important;
+    width: 60px !important;
+  }
+  .freelancer-body p {
+    font-size: 10pt !important;
+  }
+  .body-section {
+    margin-top: 15px !important;
+    width: 90% !important;
+    padding-bottom: 7px !important;
+    padding-right: 0px !important;
+  }
+  .article-metadata h5 {
+    font-size: 11pt !important;
+  }
+  .article-metadata p {
+    font-size: 10pt !important;
+  }
+  .article-metadata h3 {
+    font-size: 12pt !important;
+    text-decoration: underline;
+  }
+  .employer,
+  .employer-greeting,
+  .employer-email {
+    margin-left: 65px !important;
+    font-size: 12pt !important;
+  }
+  .employer-bio {
+    width: 500px !important;
+    margin-left: -150px !important;
+  }
+  .jobs-posted {
+    margin-left: 65px !important;
+  }
+  .btn-modal {
+    width: 65px !important;
+    height: 38px !important;
+    margin-left: -155px !important;
+    font-size: 12pt !important;
+    padding: 2px !important;
+  }
+  .alert {
+    width: 100% !important;
+  }
+  .img-jigsaw{
+    margin-left: 100px !important;
+  }
+  #jigsaw{
+    margin-left: 50px !important;
+  }
+}

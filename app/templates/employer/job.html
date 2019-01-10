@@ -9,7 +9,7 @@
   <div class="media-body" style="margin-top: 10px;">
     <h2 class="article-title">{{ job.job_title }}</h2>
 
-    <div class="article-metadata">
+    <div class="article-metadata job-metadata">
       <h5 style="text-decoration: underline;">
         <strong>Job Description</strong>
       </h5>
@@ -77,8 +77,9 @@
         <form
           action="{{url_for('employer.delete_job', job_id=job.id)}}"
           method="POST"
+          class="modal-form"
         >
-          <input type="submit" class="btn btn-danger" value="Delete" />
+          <input type="submit" class="btn btn-danger btn-modal" value="Delete" />
         </form>
         <!-- <button class="btn btn-danger">Delete</button> -->
       </div>

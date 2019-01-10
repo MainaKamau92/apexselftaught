@@ -28,7 +28,7 @@
 />
 {% endblock links%} {% extends "base.html" %} {% block body %}
 <header class="profile">
-  <div class="container h-70" style="margin-top: 15px;">
+  <div class="container h-70 employer-bio" style="margin-top: 15px;">
     <div class="h-50">
       <div class="my-auto">
         <div class="header-content mx-auto">
@@ -39,20 +39,20 @@
             <small class="display-5 mb-5 mt-3">
               {{ date.strftime("%A") }}<br />{{ date.strftime("%x") }}
             </small>
-            <p class="lead">You are an Employer</p>
+            <p class="lead employer">You are an Employer</p>
             <img
               style="height: 140px; width: 150px;"
               class="rounded-circle profile-img"
               src="{{ image_file }}"
             />
             <h4 style="margin-top: 5px;"><u>Name</u></h4>
-            <p class="greeting">
+            <p class="greeting employer-greeting">
               {{ current_user.first_name }} {{ current_user.last_name }}
             </p>
             <h4><u>Email</u></h4>
-            <p>{{ current_user.email }}</p>
+            <p class="employer-email">{{ current_user.email }}</p>
             <h4><u>Jobs Posted</u></h4>
-            <p class="display-4">
+            <p class="display-4 jobs-posted">
               <a
                 href="{{ url_for('employer.user_jobs', username=current_user.username) }}"
                 >{{ jobs.total }}</a
@@ -71,25 +71,6 @@
           </div>
         </div>
       </div>
-
-      <!-- <div class="col-lg-5 my-auto">
-        <div class="header-content mx-auto">
-          <div
-            class="ml-5 text-center text-dark"
-            style="background: rgba(250,250,250); padding: 15px;"
-          >
-            <h2>Jobs Posted</h2>
-            <h1 class="display-1">{{ jobs.total }}</h1>
-          </div>
-          <div
-            class="ml-5 mt-3 text-center text-dark"
-            style="background: rgba(250,250,250); padding: 15px;"
-          >
-            <h3 class="display-3 mb-4 mt-3">{{ date.strftime("%A") }}</h3>
-            <h4 class="display-2">{{ date.strftime("%d") }}</h4>
-          </div>
-        </div>
-      </div> -->
 
       <script type="text/javascript">
         function toggle() {
