@@ -7,8 +7,9 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from app import db, login_manager
 
 
-
 secret = os.getenv('SECRET')
+
+
 class User(UserMixin, db.Model):
     """
     Class for creating user tables on db
@@ -28,9 +29,12 @@ class User(UserMixin, db.Model):
     is_freelancer = db.Column(db.Boolean, default=False)
     is_employer = db.Column(db.Boolean, default=False)
     is_admin = db.Column(db.Boolean, default=False)
-    resume = db.relationship('Resume', backref='author', lazy=True, cascade='all, delete-orphan')
-    project = db.relationship('Project', backref='architect', lazy=True, cascade='all, delete-orphan')
-    jobpost = db.relationship('JobPost', backref='poster', lazy=True, cascade='all, delete-orphan')
+    resume = db.relationship('Resume', backref='author',
+                             lazy=True, cascade='all, delete-orphan')
+    project = db.relationship(
+        'Project', backref='architect', lazy=True, cascade='all, delete-orphan')
+    jobpost = db.relationship(
+        'JobPost', backref='poster', lazy=True, cascade='all, delete-orphan')
 
     @property
     def password(self):

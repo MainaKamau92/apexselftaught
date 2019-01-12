@@ -65,5 +65,5 @@ class ProjectForm(FlaskForm):
     client = StringField('Project Owners (Who was the project for?)', validators=[Required()],
                          render_kw={'placeholder': 'Company ABC'})
     url_link = StringField('Project URL', validators=[Required()],
-                        render_kw={'placeholder': 'http://gh-pages.github.io'})
+                           render_kw={'placeholder': 'http://gh-pages.github.io'})
     submit = SubmitField('Submit')

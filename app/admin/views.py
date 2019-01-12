@@ -4,6 +4,7 @@ from flask_login import current_user, login_required
 
 from ..models import User, JobPost
 
+
 def check_admin():
     """
     Prevent non-admins from accessing this page
@@ -11,6 +12,7 @@ def check_admin():
 
     if not current_user.is_admin:
         abort(403)
+
 
 @admin.route('/dashboard')
 @login_required
@@ -28,6 +30,7 @@ def employers():
     employers = User.query.filter_by(is_employer=True).all()
     return render_template('admin/employers.html', employers=employers)
 
+
 @admin.route('/freelancers')
 @login_required
 def freelancers():
@@ -44,7 +47,7 @@ def delete_user(id):
     """
     check_admin()
     user = User.query.get_or_404(id)
-    if user.is_admin:   
+    if user.is_admin:
         flash(f'You cannot remove an admin user', 'warning')
         abort(403)
     db.session.delete(user)

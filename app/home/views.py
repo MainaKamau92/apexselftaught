@@ -15,9 +15,6 @@ def homepage():
     return render_template('home/index.html', title='Welcome')
 
 
-
-
-
 @home.route('/contact')
 def contact():
     return render_template('contactus/contact_us.html', title='Contact Us')

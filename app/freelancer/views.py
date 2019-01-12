@@ -20,6 +20,7 @@ def date():
     now = datetime.now()
     return now
 
+
 def check_freelancer():
     """
     Prevent non freelancers from accessing views by employers from accessing this page
@@ -27,6 +28,7 @@ def check_freelancer():
 
     if not current_user.is_freelancer:
         abort(403)
+
 
 @freelancer.route('/freelancer/dashboard', methods=['GET', 'POST'])
 @login_required
@@ -141,11 +143,13 @@ def post_project():
     # load job posting form
     return render_template('freelancer/projects.html', title='Project', form=form)
 
+
 @freelancer.route('/freelancer/projects/<int:project_id>')
 @login_required
 def project(project_id):
     project = Project.query.get_or_404(project_id)
     return render_template('freelancer/project.html', title=project.title, project=project)
+
 
 @freelancer.route('/freelancer/<int:project_id>/project/update', methods=['GET', 'POST'])
 @login_required
@@ -159,8 +163,8 @@ def update_project(project_id):
         project.title = form.title.data
         project.tools_used = form.tools_used.data
         project.description = form.description.data
-        project.client=form.client.data
-        project.url_link=form.url_link.data
+        project.client = form.client.data
+        project.url_link = form.url_link.data
         db.session.commit()
         flash(f'Your Project has been updated', 'success')
         return redirect(url_for('freelancer.project', project_id=project.id))
@@ -171,6 +175,7 @@ def update_project(project_id):
         form.client.data = project.client
         form.url_link.data = project.url_link
     return render_template('freelancer/projects.html', title='Update Project', form=form)
+
 
 @freelancer.route('/freelancer/project/<int:project_id>/delete', methods=['POST'])
 @login_required
@@ -183,6 +188,7 @@ def delete_project(project_id):
     db.session.commit()
     flash(f'Your Project has been deleted', 'success')
     return redirect(url_for('freelancer.dashboard'))
+
 
 @freelancer.route('/freelancers', methods=['GET', 'POST'])
 @login_required
@@ -200,5 +206,5 @@ def get_freelancer(freelancer_id):
     user = User.query.filter_by(id=freelancer_id).first()
     res_by_id = Resume.query.filter_by(user_id=freelancer_id).first()
     proj_by_id = Project.query.filter_by(architect=user).all()
-    return render_template('freelancer/freelancer.html',res_by_id=res_by_id,
-                            proj_by_id=proj_by_id, title="Freelancer")
+    return render_template('freelancer/freelancer.html', res_by_id=res_by_id,
+                           proj_by_id=proj_by_id, title="Freelancer")

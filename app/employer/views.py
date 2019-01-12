@@ -18,6 +18,7 @@ def date():
     now = datetime.now()
     return now
 
+
 def check_employer():
     """
     Prevent non employer from accessing views by employers from accessing this page
@@ -25,7 +26,6 @@ def check_employer():
 
     if not current_user.is_employer:
         abort(403)
-
 
 
 def save_picture(form_picture):

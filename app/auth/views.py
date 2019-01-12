@@ -66,7 +66,6 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user, remember=form.remember.data)
-            next_page = request.args.get('next')
             flash(f'Logged In', 'success')
             if user.is_freelancer == True and user.is_employer == False:
                 # redirect to the freelancer dashboard page after login
