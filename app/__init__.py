@@ -41,7 +41,6 @@ def create_app(config_name):
     Markdown(app, auto_escape=True)
     mail.init_app(app)
 
-    from app import models
 
     from .admin import admin as admin_blueprint
     app.register_blueprint(admin_blueprint, url_prefix='/admin')
@@ -62,3 +61,4 @@ def create_app(config_name):
     app.register_blueprint(error_blueprint)
 
     return app
+    

@@ -1,9 +1,7 @@
 from flask import url_for
 from . import TestBase
-import click
-from flask_login import current_user
-from app.models import User, JobPost
-from app import login_manager
+from app.models import User
+
 
 class TestEmployer(TestBase):
 

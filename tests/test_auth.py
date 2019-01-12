@@ -28,7 +28,7 @@ class TestEmployer(TestBase):
         response_logout = self.client.post('/logout/')
         self.assertEqual(response_logout.status_code, 302)
         self.assertRedirects(response_logout, redirect_url)
-    
+
     def test_user_dashboard(self):
         response = self.client.post('/login/', data=self.login_data)
         self.assertEqual(response.status_code, 200)
@@ -36,4 +36,5 @@ class TestEmployer(TestBase):
         redirect_url = url_for('auth.login', next=url_for('employer.dashboard'))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, redirect_url)
+
 
