@@ -4,11 +4,8 @@ wtf %} {% extends "base.html" %} {% block title %}Login{% endblock %} {% block
 body %}
 
 <div class="content-section">
-  <br />
-  <div class="text-center" style="width: 40%; margin: auto;"></div>
-  <br />
-  <fieldset style="margin-bottom: 150px;">
-    <div class="center" style="font-size: 13pt;">
+  <fieldset class="mb-4">
+    <div class="center" id="login-form">
       <legend class="text-center"><u>LOGIN</u></legend>
       <br />
       {{ wtf.quick_form(form, button_map={'submit': 'primary'}) }}

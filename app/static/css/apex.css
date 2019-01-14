@@ -37,26 +37,10 @@ hr {
 hr.light {
   border-color: white;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Catamaran", "Helvetica", "Arial", "sans-serif";
-  font-weight: 200;
-  letter-spacing: 1px;
-}
 p {
   font-size: 18px;
   line-height: 1.5;
   margin-bottom: 20px;
-}
-section {
-  padding: 100px 0;
-}
-section h2 {
-  font-size: 50px;
 }
 #mainNav {
   border-color: rgba(34, 34, 34, 0.05);
@@ -173,24 +157,6 @@ header.masthead .device-container {
 header.masthead .device-container .screen img {
   border-radius: 3px;
 }
-@media (min-width: 992px) {
-  header.masthead {
-    height: 100vh;
-    min-height: 775px;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  header.masthead .header-content {
-    margin-bottom: 0;
-    text-align: left;
-  }
-  header.masthead .header-content h1 {
-    font-size: 50px;
-  }
-  header.masthead .device-container {
-    max-width: 325px;
-  }
-}
 footer {
   padding: 25px 0;
   text-align: center;
@@ -295,7 +261,7 @@ footer ul li a.active {
 .main {
   margin-left: 15px;
   margin-right: 15px;
-  margin-top: 0 !important;
+  margin-top: 0px;
 }
 .resume-body {
   padding-left: 35px;
@@ -303,12 +269,12 @@ footer ul li a.active {
 }
 .resume-body h3 {
   text-decoration: underline;
-  font-size: 15pt !important;
+  font-size: 15pt;
 }
 .resume-body p,
 li,
 h4 {
-  font-size: 12pt !important;
+  font-size: 12pt;
 }
 .resume h2 {
   display: inline-block;
@@ -340,91 +306,97 @@ h4 {
   .greeting,
   .email {
     margin-left: 50px;
-    font-size: 12pt !important;
+    font-size: 12pt;
   }
   .resume-body p {
-    margin-left: 10px !important;
-    font-size: 10pt !important;
+    margin-left: 10px;
+    font-size: 1pt;
   }
   .resume-body h3 {
-    font-size: 12pt !important;
+    font-size: 12pt;
     margin-left: 6px;
   }
   .resume h2 {
-    font-size: 15pt !important;
+    font-size: 15pt;
   }
-  .resume-form textarea {
-    margin-left: -82px !important;
-    width: 400px !important;
-    font-size: 10pt !important;
+  #resume-form textarea {
+    margin-left: -100px;
+    width: 360px;
+    font-size: 10pt;
   }
-  .resume-form label {
-    font-size: 15pt !important;
+  #resume-form label {
+    font-size: 15pt;
     text-decoration: underline;
   }
   .media-body h2 {
-    font-size: 17pt !important;
+    font-size: 17pt;
   }
   .media-body h5 {
-    font-size: 12pt !important;
+    font-size: 12pt;
   }
   .media-body p {
-    font-size: 11pt !important;
+    font-size: 11pt;
     margin-left: 6px;
+    width: 80%;
   }
   .media {
-    margin-top: -32px !important;
+    margin-top: -32px;
   }
-  .project-form textarea {
-    margin-left: -82px !important;
-    width: 400px !important;
-    font-size: 10pt !important;
+  #project-form textarea {
+    margin-left: -100px;
+    width: 350px;
+    font-size: 10pt;
   }
-  .project-form label {
-    font-size: 12pt !important;
+  #project-form input {
+    margin-left: -100px;
+    width: 350px;
+    font-size: 10pt;
+  }
+  #project-form label {
+    font-size: 12pt;
     text-decoration: underline;
   }
   .article-img {
-    height: 50px !important;
-    width: 60px !important;
+    height: 50px;
+    width: 60px;
   }
   .freelancer-body p {
-    font-size: 10pt !important;
+    font-size: 10pt;
   }
   .body-section {
-    margin-top: 15px !important;
-    width: 90% !important;
-    padding-bottom: 7px !important;
-    padding-right: 0px !important;
+    margin-top: 15px;
+    width: 90%;
+    padding-bottom: 7px;
+    padding-right: 0px;
   }
   .article-metadata h5 {
-    font-size: 11pt !important;
+    font-size: 11pt;
   }
   .article-metadata p {
-    font-size: 10pt !important;
+    font-size: 10pt;
   }
   .article-metadata h3 {
-    font-size: 12pt !important;
+    font-size: 12pt;
     text-decoration: underline;
   }
   .employer,
   .employer-greeting,
   .employer-email {
-    margin-left: 65px !important;
-    font-size: 12pt !important;
+    margin-left: 65px;
+    font-size: 12pt;
   }
   .employer-bio {
-    width: 500px !important;
-    margin-left: -150px !important;
+    width: 500px;
+    margin-left: -150px;
   }
   .jobs-posted {
-    margin-left: 65px !important;
+    margin-left: 65px;
   }
-  .img-jigsaw{
-    margin-left: 100px !important;
+  .img-jigsaw {
+    margin-left: 100px;
   }
-  #jigsaw{
-    margin-left: 50px !important;
+  #jigsaw {
+    margin-left: 50px;
   }
 }
 @media (max-width: 750px) {
@@ -435,154 +407,153 @@ h4 {
     margin-left: -95px;
   }
   .remember {
-    width: 15px !important;
-    margin-left: 0px !important;
+    width: 15px;
+    margin-left: 0px;
   }
   .jobseeker,
   .greeting,
   .email {
     margin-left: -5px;
-    font-size: 12pt !important;
+    font-size: 12pt;
   }
   .resume-body p {
     margin-left: -5px;
-    width: 90% !important;
-    font-size: 10pt !important;
+    width: 90%;
+    font-size: 10pt;
   }
-
   .resume-body h3 {
-    font-size: 12pt !important;
+    font-size: 12pt;
     margin-left: -7px;
   }
   .resume h2 {
-    font-size: 15pt !important;
+    font-size: 15pt;
   }
   .resume-form textarea {
-    margin-left: -100px !important;
-    width: 350px !important;
-    font-size: 10pt !important;
+    margin-left: -100px;
+    width: 350px;
+    font-size: 10pt;
   }
   .resume-form {
-    margin-bottom: 15px !important;
+    margin-bottom: 15px;
   }
   .resume-form label {
-    font-size: 15pt !important;
+    font-size: 15pt;
     text-decoration: underline;
   }
   .media-body h2 {
-    font-size: 17pt !important;
+    font-size: 17pt;
   }
   .media-body h5 {
-    font-size: 12pt !important;
+    font-size: 12pt;
   }
   .media-body p {
-    font-size: 11pt !important;
+    font-size: 11pt;
     margin-left: 6px;
+    width: 80%;
   }
   .media {
-    margin-top: 0px !important;
-    margin-bottom: 15px !important;
+    margin-top: 0px;
+    margin-bottom: 15px;
   }
   .project-form textarea,
   input {
-    margin-left: -100px !important;
-    width: 350px !important;
-    font-size: 10pt !important;
+    margin-left: -100px;
+    width: 350px;
+    font-size: 10pt;
   }
   .project-form {
     margin-bottom: 15px;
   }
   .project-form label {
-    margin-left: -100px !important;
-    font-size: 12pt !important;
+    margin-left: -100px;
+    font-size: 12pt;
     text-decoration: underline;
   }
   .article-img {
-    height: 40px !important;
-    width: 50px !important;
+    height: 40px;
+    width: 50px;
   }
   .freelancer-body p {
-    font-size: 10pt !important;
+    font-size: 10pt;
   }
   .body-section {
-    margin-top: 15px !important;
-    width: 95% !important;
-    padding-bottom: 7px !important;
-    padding-right: 0px !important;
+    margin-top: 15px;
+    width: 95%;
+    padding-bottom: 7px;
+    padding-right: 0px;
   }
   .article-metadata h5 {
-    font-size: 11pt !important;
+    font-size: 11pt;
   }
   .article-metadata p {
-    font-size: 10pt !important;
-    width: 95% !important;
+    font-size: 10pt;
+    width: 95%;
   }
   .article-metadata {
-    margin-bottom: 7px !important;
+    margin-bottom: 7px;
   }
   .article-metadata h3 {
-    font-size: 12pt !important;
+    font-size: 12pt;
     text-decoration: underline;
   }
   .employer,
   .employer-greeting,
   .employer-email {
-    margin-left: 65px !important;
-    font-size: 12pt !important;
+    margin-left: 65px;
+    font-size: 12pt;
   }
   .employer-bio {
-    width: 500px !important;
-    margin-left: -150px !important;
+    width: 500px;
+    margin-left: -150px;
   }
   .jobs-posted {
-    margin-left: 65px !important;
+    margin-left: 65px;
   }
   #toggleable-form input {
-    width: 340px !important;
-    margin-left: 30px !important;
+    width: 90%;
+    margin-left: 20px;
   }
   #toggleable-form label {
-    width: 300px !important;
-    margin-left: 20px !important;
+    width: 300px;
+    margin-left: 20px;
   }
   #toggleable-form .btn {
-    width: 40% !important;
-    margin-left: 10px !important;
+    width: 40%;
+    margin-left: 10px;
   }
   .job-metadata p {
-    width: 95% !important;
+    width: 95%;
   }
   .job-form textarea {
-    margin-left: -100px !important;
-    width: 350px !important;
-    font-size: 10pt !important;
+    margin-left: -100px;
+    width: 320px;
+    font-size: 10pt;
   }
   .job-form {
     margin-bottom: 15px;
   }
   .job-form label {
-    margin-left: -100px !important;
-    font-size: 12pt !important;
+    margin-left: -95px;
+    font-size: 12pt;
     text-decoration: underline;
   }
   .btn-modal {
-    width: 65px !important;
-    height: 38px !important;
-    margin-left: -155px !important;
-    font-size: 12pt !important;
-    padding: 2px !important;
+    width: 65px;
+    height: 38px;
+    margin-left: -155px;
+    font-size: 12pt;
+    padding: 2px;
   }
   .alert {
-    width: 100% !important;
+    width: 100%;
   }
-  .img-jigsaw{
-    margin-left: 100px !important;
+  .img-jigsaw {
+    margin-left: 100px;
   }
-  #jigsaw{
-    margin-left: 50px !important;
+  #jigsaw {
+    margin-left: 50px;
   }
 }
-
 @media (max-width: 667px) {
   .center input,
   label,
@@ -591,109 +562,163 @@ h4 {
     margin-left: -95px;
   }
   .remember {
-    width: 15px !important;
-    margin-left: 0px !important;
+    width: 15px;
+    margin-left: 0px;
+  }
+  .freelancer-bio {
+    padding: 0px;
+    margin: 0px;
   }
   .jobseeker,
   .greeting,
   .email {
-    margin-left: 30px !important;
-    font-size: 12pt !important;
+    margin-left: 60px;
+    font-size: 12pt;
   }
   .resume-body p {
-    margin-left: 10px !important;
-    font-size: 10pt !important;
+    margin-left: 10px;
+    font-size: 10pt;
   }
   .resume-body h3 {
-    font-size: 12pt !important;
+    font-size: 12pt;
     margin-left: 6px;
   }
   .resume h2 {
-    font-size: 15pt !important;
+    font-size: 15pt;
   }
-  .resume-form textarea {
-    margin-left: -100px !important;
-    width: 400px !important;
-    font-size: 10pt !important;
+  #resume-form textarea {
+    margin-left: -120px;
+    width: 450px;
+    font-size: 10pt;
   }
-  .resume-form label {
-    font-size: 15pt !important;
+  #resume-form .btn {
+    margin-left: -120px;
+    width: 450px;
+    font-size: 12pt;
+  }
+  #resume-form label {
+    font-size: 15pt;
     text-decoration: underline;
-    margin-left: -100px !important;
+    margin-left: -120px;
   }
   .media-body h2 {
-    font-size: 17pt !important;
+    font-size: 17pt;
   }
   .media-body h5 {
-    font-size: 12pt !important;
+    font-size: 12pt;
   }
   .media-body p {
-    font-size: 11pt !important;
+    font-size: 11pt;
     margin-left: 6px;
   }
   .media {
-    margin-top: -32px !important;
+    margin-top: -32px;
   }
-  .project-form textarea {
-    margin-left: -100px !important;
-    width: 400px !important;
-    font-size: 10pt !important;
+  #project-form textarea {
+    margin-left: -120px;
+    width: 450px;
+    font-size: 10pt;
   }
-  .project-form label {
-    font-size: 12pt !important;
+  #project-form input {
+    margin-left: -120px;
+    width: 450px;
+    font-size: 10pt;
+  }
+  #project-form label {
+    font-size: 12pt;
     text-decoration: underline;
-    margin-left: -100px !important;
+    margin-left: -120px;
   }
   .article-img {
-    height: 50px !important;
-    width: 60px !important;
+    height: 50px;
+    width: 60px;
   }
   .freelancer-body p {
-    font-size: 10pt !important;
+    font-size: 10pt;
   }
   .body-section {
-    margin-top: 15px !important;
-    width: 90% !important;
-    padding-bottom: 7px !important;
-    padding-right: 0px !important;
+    margin-top: 15px;
+    width: 90%;
+    padding-bottom: 7px;
+    padding-right: 0px;
   }
   .article-metadata h5 {
-    font-size: 11pt !important;
+    font-size: 11pt;
   }
   .article-metadata p {
-    font-size: 10pt !important;
+    font-size: 10pt;
   }
   .article-metadata h3 {
-    font-size: 12pt !important;
+    font-size: 12pt;
     text-decoration: underline;
   }
   .employer,
   .employer-greeting,
   .employer-email {
-    margin-left: 65px !important;
-    font-size: 12pt !important;
+    margin-left: 65px;
+    font-size: 12pt;
   }
   .employer-bio {
-    width: 500px !important;
-    margin-left: -150px !important;
+    width: 500px;
+    margin-left: -150px;
   }
   .jobs-posted {
-    margin-left: 65px !important;
+    margin-left: 65px;
   }
   .btn-modal {
-    width: 65px !important;
-    height: 38px !important;
-    margin-left: -155px !important;
-    font-size: 12pt !important;
-    padding: 2px !important;
+    width: 65px;
+    height: 38px;
+    margin-left: -155px;
+    font-size: 12pt;
+    padding: 2px;
   }
   .alert {
     width: 100% !important;
   }
-  .img-jigsaw{
-    margin-left: 100px !important;
+  .img-jigsaw {
+    margin-left: 100px;
   }
-  #jigsaw{
+  #jigsaw {
+    margin-left: 50px;
+  }
+  #employer,
+  #freelancer {
+    margin-right: -145px;
+  }
+  .checkbox {
+    margin-left: -50px;
+  }
+  #register-form {
+    margin-left: 170px;
+  }
+  #register-form input {
+    width: 350px;
+  }
+  #login-form {
+    margin-left: 170px;
+  }
+  #login-form input {
+    width: 350px;
+  }
+  #remember {
     margin-left: 50px !important;
+  }
+}
+@media (min-width: 992px) {
+  header.masthead {
+    height: 100vh;
+    min-height: 775px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  header.masthead .header-content {
+    margin-bottom: 0;
+    text-align: left;
+  }
+  header.masthead .header-content h1 {
+    font-size: 50px;
+  }
+  header.masthead .device-container {
+    max-width: 325px;
   }
 }

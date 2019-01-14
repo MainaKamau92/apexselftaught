@@ -1,9 +1,9 @@
 {% import "bootstrap/wtf.html" as wtf %} {% extends "base.html" %} 
 {% block title %}{{ title }}{% endblock %} 
 {% block body %}
-<fieldset style="margin-bottom: 10px;">
+<fieldset class="mb-4">
   <div class="content-section">
-    <div class="center project-form">
+    <div class="center" id="project-form">
       <legend class="text-center mt-3"><u>{{ title }}</u></legend>
       <br />
       {{ wtf.quick_form(form, button_map={'submit': 'primary'}) }}

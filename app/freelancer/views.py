@@ -204,7 +204,11 @@ def freelancers():
 @login_required
 def get_freelancer(freelancer_id):
     user = User.query.filter_by(id=freelancer_id).first()
-    res_by_id = Resume.query.filter_by(user_id=freelancer_id).first()
-    proj_by_id = Project.query.filter_by(architect=user).all()
-    return render_template('freelancer/freelancer.html', res_by_id=res_by_id,
-                           proj_by_id=proj_by_id, title="Freelancer")
+    try:
+        res_by_id = Resume.query.filter_by(user_id=freelancer_id).first()
+        proj_by_id = Project.query.filter_by(architect=user).all()
+        return render_template('freelancer/freelancer.html', res_by_id=res_by_id,
+                            proj_by_id=proj_by_id, title="Freelancer")
+    except:
+        abort(404)  
+    
