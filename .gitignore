@@ -95,6 +95,7 @@ ENV/
 
 #batch file
 .bat
+env.bat
 
 # Rope project settings
 .ropeproject
