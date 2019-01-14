@@ -93,9 +93,8 @@ ENV/
 .spyderproject
 .spyproject
 
-#batch file
+#batch files
 *.bat
-env.bat
 
 # Rope project settings
 .ropeproject
