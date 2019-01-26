@@ -38,7 +38,7 @@
 
   <body id="page-top">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark" id="mainNav">
       <div class="container">
         <a
           class="navbar-brand js-scroll-trigger"
@@ -47,7 +47,7 @@
           ><i class="fa fa-home"></i>&nbsp;Home</a
         >
         <button
-          class="navbar-toggler navbar-toggler-right"
+          class="navbar-toggler navbar-toggler-right text-light"
           type="button"
           data-toggle="collapse"
           data-target="#navbarResponsive"
@@ -55,7 +55,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          Menu <i class="fas fa-bars"></i>
+          Menu <i class="fas fa-bars text-light"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
@@ -70,7 +70,7 @@
               <a
                 class="nav-link js-scroll-trigger"
                 href="{{ url_for('auth.login') }}"
-                ><i class="fa fa-user-lock"></i>&nbsp;Login</a
+                ><i class="fa fa-sign-in-alt"></i>&nbsp;Login</a
               >
             </li>
             <li class="nav-item">
@@ -87,38 +87,45 @@
 
     <header class="masthead">
       <div class="container h-100">
-        <div class="row h-100">
-          <div class="col-lg-7 my-auto">
-            <div class="header-content mx-auto">
-              <div
-                class="mb-5 ml-5 mt-5 text-center text-light"
-                style="background: rgba(0,0,0,0.7); padding: 15px; border-radius: 10px;"
-              >
-                <h3>Apex freelance project (backstory)</h3>
+        <div class="header-content mx-auto">
+          <div id="index-description">
+            <div
+            id="index-description-body"
+              class="text-center text-light"
+              style="background: rgba(0,0,0,0.7);"
+            >
+              <h3 class="desc-title">Apex Self Taught</h3>
 
-                <p class="container">
-                  Apex is an idea that aims at creating a site that gives self
-                  taught professionals in the fields of design and software
-                  engineering a chance to get hired by firms without any formal
-                  certification. Itis based of the belief that getting a degree,
-                  diploma and the like however important it may be should not
-                  suffice as reason enough to exercise monopoly over said fields
-                  It's an ambitious project, completely open source and a first
-                  in many respects in the region i'm from.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-5 my-auto">
-            <div class="device-container">
-              <div class="device-mockup iphone6_plus portrait white">
-                <div class="device">
-                  <div class="screen">
-                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                  </div>
-                  <div class="button">
-                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                  </div>
+              <p class="container">
+                Apex is an idea that aims at creating a site that gives self
+                taught professionals in the fields of design and software
+                engineering a chance to get hired by firms without any formal
+                certification. It is based of the belief that getting a degree,
+                diploma and the like however important it may be should not
+                suffice as reason enough to exercise monopoly over said fields
+                It's an ambitious project, completely open source.
+              </p>
+              <div class="row mt-5">
+                <div class="col-md-6 col-xs-12" id="pro-div">
+                    <i class="fa fa-user-friends fa-5x"></i></a
+                    >
+                    <h5>Professionals</h5>
+                    <p class="text-center">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Dolore dignissimos consequatur minima aspernatur cum 
+                      eveniet officiis modi,accusantium minus quidem blanditiis? Molestiae vitae 
+                      harum hic quam quis soluta blanditiis numquam?
+                    </p>
+                </div>
+                <div class="col-md-6 col-xs-12" id="hir-div">
+                    <i class="fa fa-industry fa-5x"></i></a>
+                    <h5>Hirers</h5>
+                    <p class="text-center">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Dolore dignissimos consequatur minima aspernatur cum eveniet officiis modi, 
+                      accusantium minus quidem blanditiis? Molestiae vitae 
+                      harum hic quam quis soluta blanditiis numquam?
+                    </p>
                 </div>
               </div>
             </div>

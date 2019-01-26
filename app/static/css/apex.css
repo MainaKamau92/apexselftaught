@@ -4,20 +4,10 @@ html,
 body {
   width: 100%;
   height: 100%;
-  background-color: #e7e7e7;
-
-  background-image: linear-gradient(
-      90deg,
-      transparent 79px,
-      #abced4 79px,
-      #abced4 81px,
-      transparent 81px
-    ),
-    linear-gradient(#eee 0.1em, transparent 0.1em);
-  background-size: 100% 1.2em;
+  background-color: #eff1f2;
 }
 body {
-  font-family: "Muli", "Helvetica", "Arial", "sans-serif";
+  font-family: "Verdana", "Helvetica", "Arial", "sans-serif";
 }
 a {
   color: #fdcc52;
@@ -49,6 +39,7 @@ p {
   font-family: "Catamaran", "Helvetica", "Arial", "sans-serif";
   font-weight: 200;
   letter-spacing: 1px;
+  color: #000 !important;
 }
 #mainNav .navbar-brand {
   color: #000;
@@ -88,6 +79,24 @@ p {
 #mainNav .navbar-nav > li > a:focus:hover {
   color: #fdcc52;
   border-radius: 5px;
+}
+#index-description {
+  margin-left: 50px;
+  padding-top: 100px;
+  margin-right: 50px;
+}
+#index-description-body {
+  padding: 15px;
+}
+#pro-div p {
+  padding: 15px;
+}
+#hir-div p {
+  padding: 15px;
+}
+.desc-title {
+  padding-top: 15px;
+  text-decoration: underline;
 }
 @media (min-width: 992px) {
   #mainNav {
@@ -138,7 +147,17 @@ header.masthead {
   padding-top: 150px;
   padding-bottom: 100px;
   color: white;
-  background: url("../img/background.jpg");
+  background: url("../img/f.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+header.contact-masthead {
+  position: relative;
+  width: 100%;
+  margin-top: -35px;
+  padding-top: 0px;
+  padding-bottom: 100px;
+  background: url("../img/f.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -257,6 +276,11 @@ footer ul li a.active {
 }
 .contact-section .social a:active {
   color: #fff;
+}
+#contact-title {
+  background: rgba(0, 0, 0, 0.7);
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 .main {
   margin-left: 15px;
