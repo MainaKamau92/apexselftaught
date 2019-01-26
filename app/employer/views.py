@@ -79,7 +79,7 @@ def dashboard():
         form.email.data = current_user.email
     image_file = url_for('static',
                          filename='profile_pics/' + current_user.image_file)
-    return render_template('employer/dashboard.html', title='Employer',
+    return render_template('employer/dashboard.html', title=user.first_name + " " + user.last_name,
                            image_file=image_file, form=form, jobs=jobs, date=date())
 
 
