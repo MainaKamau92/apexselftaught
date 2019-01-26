@@ -1,4 +1,5 @@
 # app/auth/views.py
+import os
 from flask import flash, redirect, render_template, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
 from . import auth
@@ -98,6 +99,7 @@ def logout():
 
 
 def send_reset_email(user):
+    
     try:
         token = user.get_reset_token()
         msg = Message('Password Reset Request',
@@ -109,8 +111,9 @@ def send_reset_email(user):
         If you did not make this request ignore this email
         '''
         mail.send(msg)
+        
     except Exception as e:
-        print(str(e))
+        print(e)
 
 
 @auth.route('/reset-password', methods=['GET', 'POST'])

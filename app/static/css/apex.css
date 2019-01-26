@@ -98,6 +98,9 @@ p {
   padding-top: 15px;
   text-decoration: underline;
 }
+.help-block {
+  color: red;
+}
 @media (min-width: 992px) {
   #mainNav {
     border-color: transparent;

@@ -7,7 +7,7 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from app import db, login_manager
 
 
-secret = os.getenv('SECRET')
+secret = os.getenv('SECRET_KEY')
 
 
 class User(UserMixin, db.Model):
