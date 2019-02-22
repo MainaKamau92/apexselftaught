@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% block title%}{{ title }}{% endblock title%} {%block
+body %}
+
+<div class="row" style="width: 100%; padding-left: 150px;">
+  <div class="col-3 mt-4">
+    <div class="card" style="width: 23%; position: fixed;">
+      <img
+        class="card-img-top"
+        src="{{ url_for('static', filename='img/logo.png')}}"
+        alt="Card image cap"
+        id="blog-img"
+      />
+      <div class="card-body">
+        <p class="card-text" >
+          <p id="blog-card-text">
+              Apex Self Taught aims at being an oasis in a desert of regard for
+              formal accreditation over competence. Apex believes that the sum
+              competence of a professional does not reside solely in formal
+              structured academia.
+          </p>
+         
+          <p id="blog-card-text">
+              We envision a future where the roles of
+              competence, intellectualism and professionalism are considered outside
+              the formality of diploma certificates. We believe that self-drive to
+              pursue one's passion should not be rewarded with disregard.......
+          </p>
+          
+        </p>
+        <a href="{{ url_for('home.about_us')}}" class="badge badge-primary">About Us</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-8" style="padding-left: 80px;">
+    {% if blogs.items %} {% for blog in blogs.items %}
+    <article class="blog-body media">
+      <img
+        src="{{ url_for('static', filename='blog_pics/' + blog.image_file )}}"
+        alt="Profile picture"
+        class="article-img mt-4"
+        style="height: 100px; width: 120px;"
+      />
+
+      <div class="media-body ml-5">
+        <h2>
+          <a
+            class="blog-title"
+            href="{{ url_for('home.get_blog', blog_id=blog.id)}}"
+            >{{ blog.blog_title }}</a
+          >
+        </h2>
+        <p id="blog-desc">
+          {{ blog.blog_description | truncate }}
+        </p>
+        <span class="mr-2 badge badge-warning text-capitalize">{{
+          blog.blogger.username
+        }}</span>
+      </div>
+    </article>
+    {% endfor %} {% else %}
+    <h1 class="text-center">
+      There are no Blogs yet, kindly check back later.
+    </h1>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock body %}

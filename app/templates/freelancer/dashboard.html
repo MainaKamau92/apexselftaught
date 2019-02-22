@@ -14,21 +14,22 @@ title %}{{ title }}{% endblock %} {% block body%}
               <small class="display-5 mb-5 mt-3">
                 {{ date.strftime("%A") }}<br />{{ date.strftime("%x") }}
               </small>
-              <p class="lead jobseeker"><u>You are a Job Seeker</u></p>
+              <p class="lead " id="jobseeker"><u>You are a Job Seeker</u></p>
               <img
                 style="height: 190px; width: 200px;"
                 class="rounded-circle profile-img"
                 src="{{ image_file }}"
               />
               <h4 style="margin-top: 5px;"><u>Name</u></h4>
-              <p class="greeting">
+              <p id="greeting">
                 {{ current_user.first_name }} {{ current_user.last_name }}
               </p>
               <h4><u>Email</u></h4>
-              <p class="email">{{ current_user.email }}</p>
+              <p id="email">{{ current_user.email }}</p>
               <p class="display-4"></p>
               <button
                 onclick="toggle()"
+                id="dashboard-btn"
                 class="btn btn-primary"
                 style="margin-bottom: 15px;"
               >

@@ -6,7 +6,7 @@ body %}
 <div class="content-section">
   <fieldset class="mb-4 mt-4">
     <div class="center" id="login-form">
-      <legend class="text-center"><u>LOGIN</u></legend>
+      <legend class="text-center" id="login-lbl"><u>LOGIN</u></legend>
       <br />
       {{ wtf.quick_form(form, button_map={'submit': 'primary'}) }}
       <a href="{{ url_for('auth.request_reset') }}"><p class="text-dark mt-3">Forgot Password?</p class="text-dark mt-3"></a>

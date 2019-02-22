@@ -20,8 +20,10 @@ class RegistrationForm(FlaskForm):
         min=2, max=15)], render_kw={'placeholder': 'username'})
     email = StringField('Email', validators=[Required(), Email()], render_kw={
                         'placeholder': 'email'})
-    employer = BooleanField('Employer')
-    freelancer = BooleanField('Freelancer')
+    employer = BooleanField('Employer', render_kw={
+                        'id': 'employer-check'})
+    freelancer = BooleanField('Freelancer', render_kw={
+                        'id': 'freelancer-check'})
     password = PasswordField('Password', validators=[Required()])
     confirm_password = PasswordField('Confirm Password', validators=[
                                      Required(), EqualTo('password')])
@@ -43,9 +45,9 @@ class LoginForm(FlaskForm):
     Forms for logging in a user
     """
     email = StringField('Email', validators=[Required(), Email()], render_kw={
-        'placeholder': 'email'})
+        'placeholder': 'email', 'id': 'email'})
     password = PasswordField('Password', validators=[Required()], render_kw={
-                             'placeholder': '*********'})
+                             'placeholder': '*********', 'id': 'password'})
     remember = BooleanField('Remember Me', render_kw={'class': 'remember'})
     submit = SubmitField('Log In')
 

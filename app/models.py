@@ -35,6 +35,9 @@ class User(UserMixin, db.Model):
         'Project', backref='architect', lazy=True, cascade='all, delete-orphan')
     jobpost = db.relationship(
         'JobPost', backref='poster', lazy=True, cascade='all, delete-orphan')
+    blogpost = db.relationship(
+        'BlogPost', backref='blogger', lazy=True, cascade='all, delete-orphan')
+    
 
     @property
     def password(self):
@@ -128,3 +131,19 @@ class JobPost(db.Model):
     contact_email = db.Column(db.String(150), nullable=False)
     contact_number = db.Column(db.String(150))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+class BlogPost(db.Model):
+    """
+    Class that creates tables for the app's blog
+    """
+    __tablename__ = 'blogposts'
+
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    blog_title = db.Column(db.String(100), nullable=False)
+    blog_description = db.Column(db.Text, nullable=False)
+    image_file = db.Column(db.String(1000), nullable=False,
+                           default='blog_default.jpg')
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+
+    

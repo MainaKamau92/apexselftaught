@@ -6,6 +6,18 @@ body {
   height: 100%;
   background-color: #eff1f2;
 }
+pre {
+  background: rgba(0, 0, 0, 0.05);
+  margin: auto;
+  padding: 15px;
+  width: 80%;
+  border-radius: 5px;
+  margin-bottom: 35px;
+  margin-top: 35px;
+  color: #000;
+  font-family: "Menlo";
+  font-size: 12pt;
+}
 body {
   font-family: "Verdana", "Helvetica", "Arial", "sans-serif";
 }
@@ -101,7 +113,25 @@ p {
 .help-block {
   color: red;
 }
-@media (min-width: 992px) {
+.blog-body {
+  border-radius: 5px solid gray;
+  padding: 15px 10px 15px 45px;
+}
+.blog-title {
+  font-size: 14pt;
+}
+#blog-desc {
+  font-size: 12pt;
+  width: 70%;
+}
+#blog-img {
+  height: 40vh;
+}
+#blog-card-text {
+  font-size: 11pt;
+  font-family: "Arial";
+}
+@media (max-width: 825px) {
   #mainNav {
     border-color: transparent;
     background-color: transparent;
@@ -225,6 +255,33 @@ footer ul li a.active {
   padding: 15px 10px 15px 15px;
   width: 100%;
 }
+#blog-card {
+  width: 60%;
+  margin: auto;
+  box-shadow: 5px 5px #888888;
+}
+.blog-profile li {
+  display: inline-block;
+  text-decoration: none;
+  margin-left: -35px;
+}
+.blog-author {
+  font-family: "Segoe UI";
+  font-size: 20pt;
+  padding-left: 35px;
+}
+#blog-title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 75pt;
+  text-decoration: underline;
+}
+.badge {
+  height: 30px;
+  padding: 7px;
+  font-size: 11pt;
+  font-family: Arial;
+  border-radius: 0px;
+}
 .article-img {
   padding-right: 10px;
 }
@@ -329,11 +386,14 @@ h4 {
     width: 15px !important;
     margin-left: 0px !important;
   }
-  .jobseeker,
-  .greeting,
-  .email {
-    margin-left: 50px;
-    font-size: 12pt;
+  #jobseeker {
+    margin-left: 22px;
+  }
+  #greeting {
+    margin-left: 15px;
+  }
+  #email {
+    margin-left: 15px;
   }
   .resume-body p {
     margin-left: 10px;
@@ -426,7 +486,7 @@ h4 {
     margin-left: 50px;
   }
 }
-@media (max-width: 750px) {
+@media (max-width: 625px) {
   .center input,
   label,
   p {
@@ -580,8 +640,34 @@ h4 {
   #jigsaw {
     margin-left: 50px;
   }
+  #register-form {
+    margin-left: 100px;
+    width: 90%;
+  }
+  #register-form input {
+    width: 100%;
+  }
+  #reg-lbl {
+    margin-left: -95px;
+  }
+  #login-form {
+    width: 90%;
+    margin-left: 100px;
+  }
+  #email {
+    margin-left: -95px;
+  }
+  #login-lbl {
+    margin-left: -95px;
+  }
+  #login-form input {
+    width: 100%;
+  }
 }
-@media (max-width: 667px) {
+@media (max-width: 425px) {
+  body, nav {
+    width: 100%;
+  }
   .center input,
   label,
   p {
@@ -596,11 +682,14 @@ h4 {
     padding: 0px;
     margin: 0px;
   }
-  .jobseeker,
-  .greeting,
-  .email {
-    margin-left: 60px;
-    font-size: 12pt;
+  #jobseeker {
+    margin-left: -40px;
+  }
+  #greeting {
+    margin-left: -40px;
+  }
+  #email {
+    margin-left: -40px;
   }
   .resume-body p {
     margin-left: 10px;
@@ -614,19 +703,19 @@ h4 {
     font-size: 15pt;
   }
   #resume-form textarea {
-    margin-left: -120px;
-    width: 450px;
+    margin-left: -90px;
+    width: 300px;
     font-size: 10pt;
   }
   #resume-form .btn {
-    margin-left: -120px;
-    width: 450px;
+    margin-left: -95px;
+    width: 300px;
     font-size: 12pt;
   }
   #resume-form label {
     font-size: 15pt;
     text-decoration: underline;
-    margin-left: -120px;
+    margin-left: -90px;
   }
   .media-body h2 {
     font-size: 17pt;
@@ -642,23 +731,23 @@ h4 {
     margin-top: -32px;
   }
   #project-form textarea {
-    margin-left: -120px;
-    width: 450px;
+    margin-left: -90px;
+    width: 300px;
     font-size: 10pt;
   }
   #project-form input {
-    margin-left: -120px;
-    width: 450px;
+    margin-left: -90px;
+    width: 300px;
     font-size: 10pt;
   }
   #project-form label {
     font-size: 12pt;
     text-decoration: underline;
-    margin-left: -120px;
+    margin-left: -90px;
   }
   .article-img {
-    height: 50px;
-    width: 60px;
+    height: 30px;
+    width: 40px;
   }
   .freelancer-body p {
     font-size: 10pt;
@@ -713,19 +802,32 @@ h4 {
     margin-right: -145px;
   }
   .checkbox {
-    margin-left: -50px;
+    margin-left: -5px;
   }
+  
+
   #register-form {
-    margin-left: 170px;
+    margin-left: 100px;
+    width: 100%;
   }
   #register-form input {
-    width: 350px;
+    width: 90%;
+  }
+  #reg-lbl {
+    margin-left: -95px;
   }
   #login-form {
-    margin-left: 170px;
+    width: 90%;
+    margin-left: 100px;
+  }
+  #email {
+    margin-left: -95px;
+  }
+  #login-lbl {
+    margin-left: -95px;
   }
   #login-form input {
-    width: 350px;
+    width: 100%;
   }
   #remember {
     margin-left: 50px !important;
