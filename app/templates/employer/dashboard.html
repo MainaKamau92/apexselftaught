@@ -59,12 +59,13 @@
               >
             </p>
             <button
-              onclick="toggle()"
-              class="btn btn-primary"
-              style="margin-bottom: 15px;"
-            >
-              Edit Info
-            </button>
+                onclick="toggle()"
+                id="dashboard-btn"
+                class="btn btn-primary"
+                style="margin-bottom: 15px;"
+              >
+                Edit Info
+              </button>
             <div style="display: none" id="toggleable-form">
               {{ wtf.quick_form(form, enctype="multipart/form-data", button_map={'submit': 'primary'}) }}
             </div>

@@ -1,16 +1,27 @@
-
+"""
+This module deals with the creation of the forms that are to be used in the admin routes for various purposes
+which include:
+A form for writing the blog post of the application that includes a title and a body
+A form for editing a blog post individually which also includes a title and a body
+This forms can only be accessible to users with admin privileges
+Implements FlaskForm module from the flask_wtf package that gives access to various inputs that are rendered 
+on the template in their HTML correct formatting based on the description of the classes inherited from the FlaskForm module
+e.g StringField() defines the equivalent of an input on an HTML format 
+"""
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, SubmitField, TextAreaField, ValidationError
+from wtforms import StringField, SubmitField, TextAreaField
 from wtforms.validators import Required, Email, Length
 from flask_login import current_user
 from ..models import User
 
 
-
 class UpdateForm(FlaskForm):
     """
-    Form for users to create new account
+    Forms for admin users to edit blogs they have posted on the site
+    The class inherits fromm the FlaskForm module which gives access to the TextArea(Renders a text field on the template)
+    StringField(render an input field on the template page), FileField(enables remdering of a file field on the template) and 
+    SubmitField(renders a submit button on the template)
     """
     first_name = StringField('First Name', validators=[Required()], render_kw={
                              'placeholder': 'first name'})
@@ -24,28 +35,19 @@ class UpdateForm(FlaskForm):
                         FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Update')
 
-    def validate_username(self, username):
-        if username.data != current_user.username:
-            user = User.query.filter_by(username=username.data).first()
-            if user:
-                raise ValidationError('Username already exists')
-
-    def validate_email(self, email):
-        if email.data != current_user.email:
-            user = User.query.filter_by(email=email.data).first()
-            if user:
-                raise ValidationError('Email already exists')
-
 
 class BlogForm(FlaskForm):
     """
-    Forms for logging in a user
+    Forms for admin users to post blogs on the site
+    The class inherits fromm the FlaskForm module which gives access to the TextArea(Renders a text field on the template)
+    StringField(render an input field on the template page), FileField(enables remdering of a file field on the template) and 
+    SubmitField(renders a submit button on the template)
     """
     blog_title = StringField('Blog Title', validators=[Required()],
-                            render_kw={'placeholder': 'Blog Title'})
+                             render_kw={'placeholder': 'Blog Title'})
     blog_description = TextAreaField('Blog Body', validators=[Required()],
-                                    render_kw={'rows': '25', 
-                                    'placeholder': "Use the '*' before you start the sentence to make a list",'id':'textbox'})
+                                     render_kw={'rows': '25',
+                                                'placeholder': "Use the '*' before you start the sentence to make a list", 'id': 'textbox'})
     picture = FileField('Blog Photo', validators=[
                         FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Submit')

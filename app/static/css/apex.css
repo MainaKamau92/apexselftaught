@@ -19,7 +19,7 @@ pre {
   font-size: 12pt;
 }
 body {
-  font-family: "Verdana", "Helvetica", "Arial", "sans-serif";
+  font-family: "Open sans", "Verdana", "Helvetica", "Arial", "sans-serif";
 }
 a {
   color: #fdcc52;
@@ -129,7 +129,7 @@ p {
 }
 #blog-card-text {
   font-size: 11pt;
-  font-family: "Arial";
+  font-family: "Open Sans", "Verdana";
 }
 @media (max-width: 825px) {
   #mainNav {
@@ -250,6 +250,7 @@ footer ul li a.active {
 }
 .body-section {
   margin-top: 15px;
+  margin-bottom: 15px;
   border-radius: 5px solid gray;
   background-color: #fff;
   padding: 15px 10px 15px 15px;
@@ -259,6 +260,10 @@ footer ul li a.active {
   width: 60%;
   margin: auto;
   box-shadow: 5px 5px #888888;
+}
+#about-card {
+  width: 60%;
+  margin: auto;
 }
 .blog-profile li {
   display: inline-block;
@@ -397,7 +402,7 @@ h4 {
   }
   .resume-body p {
     margin-left: 10px;
-    font-size: 1pt;
+    font-size: 10pt;
   }
   .resume-body h3 {
     font-size: 12pt;
@@ -665,7 +670,8 @@ h4 {
   }
 }
 @media (max-width: 425px) {
-  body, nav {
+  body,
+  nav {
     width: 100%;
   }
   .center input,
@@ -804,7 +810,6 @@ h4 {
   .checkbox {
     margin-left: -5px;
   }
-  
 
   #register-form {
     margin-left: 100px;

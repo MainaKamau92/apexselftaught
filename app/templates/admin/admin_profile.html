@@ -40,7 +40,7 @@
             <small class="display-5 mb-5 mt-3">
               {{ date.strftime("%A") }}<br />{{ date.strftime("%x") }}
             </small>
-            <p class="lead employer">You are an Employer</p>
+            <p class="lead employer">You are an Administrator</p>
             <img
               style="height: 140px; width: 150px;"
               class="rounded-circle profile-img"
@@ -52,37 +52,35 @@
             </p>
             <h4><u>Email</u></h4>
             <p class="employer-email">{{ current_user.email }}</p>
-            <h4><u>Jobs Posted</u></h4>
+            <h4><u>Members Count</u></h4>
             <p class="display-4 jobs-posted">
-              <a
-                href="{{ url_for('employer.user_jobs', username=current_user.username) }}"
-                >{{ jobs.total }}</a
-              >
+              <table class="table table-striped table-bordered ">
+                <thead>
+                  <th>Employers</th>
+                  <th>Freelancers</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ employers.total }}</td>
+                    <td>{{ freelancers.total }}</td>
+                  </tr>
+                </tbody>
+              </table>
             </p>
             <button
-              onclick="toggle()"
-              class="btn btn-primary"
-              style="margin-bottom: 15px;"
-            >
-              Edit Info
-            </button>
+                onclick="toggle()"
+                id="dashboard-btn"
+                class="btn btn-primary"
+                style="margin-bottom: 15px;"
+              >
+                Edit Info
+              </button>
             <div style="display: none" id="toggleable-form">
               {{ wtf.quick_form(form, enctype="multipart/form-data", button_map={'submit': 'primary'}) }}
             </div>
           </div>
         </div>
       </div>
-
-      <script type="text/javascript">
-        function toggle() {
-          var x = document.getElementById("toggleable-form");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-        }
-      </script>
       {% endblock body %}
     </div>
   </div>

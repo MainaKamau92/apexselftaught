@@ -1,3 +1,6 @@
+"""
+The module defines all the admin routes of the application 
+"""
 from . import admin
 from flask import abort, render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_required
@@ -13,7 +16,7 @@ from app import db, create_app
 
 def check_admin():
     """
-    Prevent non-admins from accessing this page
+    This function prevents non-admins from accessing this page and is called on every route
     """
 
     if not current_user.is_admin:
@@ -21,7 +24,7 @@ def check_admin():
 
 def save_blog_picture(form_picture):
     """
-    function for saving the path to the profile picture
+    function for saving the path to the picture 
     """
     app = create_app(config_name=os.getenv('APP_SETTINGS'))
     # random hex to be usedin storing the file name to avoid clashes
@@ -42,14 +45,17 @@ def save_blog_picture(form_picture):
 @login_required
 def admin_profile():
     """
-    Render the homepage template on the / route
+    The function renders the profile page for the admin after a successful login 
     """
     from ..employer.views import save_picture
     check_admin()
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=current_user.username).first_or_404()
-    jobs = JobPost.query.filter_by(poster=user)\
-        .order_by(JobPost.date_posted.desc()).\
+    employers = User.query.filter_by(is_employer=True)\
+        .order_by(User.id.desc()).\
+        paginate(page=page, per_page=5)
+    freelancers = User.query.filter_by(is_freelancer=True)\
+        .order_by(User.id.desc()).\
         paginate(page=page, per_page=5)
     form = UpdateForm()
     if form.validate_on_submit():
@@ -71,7 +77,7 @@ def admin_profile():
     image_file = url_for('static',
                          filename='profile_pics/' + current_user.image_file)
     return render_template('admin/admin_profile.html', title=user.first_name + " " + user.last_name,
-                           image_file=image_file, form=form, jobs=jobs, date=date())
+                           image_file=image_file, form=form, employers=employers, freelancers=freelancers, date=date())
 @admin.route('/dashboard')
 @login_required
 def admin_dashboard():
