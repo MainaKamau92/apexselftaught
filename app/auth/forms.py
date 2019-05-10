@@ -12,14 +12,11 @@ class RegistrationForm(FlaskForm):
     """
     Form for users to create new account
     """
-    first_name = StringField('First Name', validators=[Required()], render_kw={
-                             'placeholder': 'first name'})
-    last_name = StringField('Last Name', validators=[Required()], render_kw={
-        'placeholder': 'last name'})
+    first_name = StringField('First Name', validators=[Required()])
+    last_name = StringField('Last Name', validators=[Required()])
     username = StringField('Username', validators=[Required(), Length(
-        min=2, max=15)], render_kw={'placeholder': 'username'})
-    email = StringField('Email', validators=[Required(), Email()], render_kw={
-                        'placeholder': 'email'})
+        min=2, max=15)])
+    email = StringField('Email', validators=[Required(), Email()])
     employer = BooleanField('Employer', render_kw={
                         'id': 'employer-check'})
     freelancer = BooleanField('Freelancer', render_kw={
@@ -44,10 +41,8 @@ class LoginForm(FlaskForm):
     """
     Forms for logging in a user
     """
-    email = StringField('Email', validators=[Required(), Email()], render_kw={
-        'placeholder': 'email', 'id': 'email'})
-    password = PasswordField('Password', validators=[Required()], render_kw={
-                             'placeholder': '*********', 'id': 'password'})
+    email = StringField('Email', validators=[Required(), Email()])
+    password = PasswordField('Password', validators=[Required()])
     remember = BooleanField('Remember Me', render_kw={'class': 'remember'})
     submit = SubmitField('Log In')
 

@@ -1,7 +1,7 @@
 """Api configurations"""
 import os
 
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 class Config:
     """
     Base configuration class.
@@ -16,6 +16,8 @@ class Config:
     MAIL_USE_TLS = False
     MAIL_USERNAME = os.getenv('EMAIL_USER')
     MAIL_PASSWORD = os.getenv('EMAIL_PASS')
+    SCSS_ASSET_DIR = os.path.join(BASE_DIR, './app/assets/scss')
+    SCSS_STATIC_DIR = os.path.join(BASE_DIR, './app/static/css')
 
 
 class DevelopmentConfig(Config):

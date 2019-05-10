@@ -9,6 +9,7 @@ from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap
 from flaskext.markdown import Markdown
 from flask_mail import Mail
+from flask_scss import Scss
 
 # local imports
 
@@ -40,7 +41,7 @@ def create_app(config_name):
     Bootstrap(app)
     Markdown(app, auto_escape=True)
     mail.init_app(app)
-
+    Scss(app)
 
     from .admin import admin as admin_blueprint
     app.register_blueprint(admin_blueprint, url_prefix='/admin')
@@ -61,4 +62,3 @@ def create_app(config_name):
     app.register_blueprint(error_blueprint)
 
     return app
-    

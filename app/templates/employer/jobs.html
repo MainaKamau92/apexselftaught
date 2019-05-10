@@ -1,7 +1,7 @@
 {% extends "base.html" %}
  {% block title%}{{ title }}{% endblock title%} 
  {%block body %}
-<h2 class="container text-center mb-5"><u>Pending Jobs</u></h2>
+<h3 class="container text-center mb-5"><u>Pending Jobs</u></h3>
 {% if jobs.items %}
        
       {% for job in jobs.items %}
@@ -9,8 +9,8 @@
         <img
           src="{{ url_for('static', filename='profile_pics/' + job.poster.image_file )}}"
           alt="Profile picture"
-          class="article-img rounded-circle"
-          style="height: 90px; width: 100px;"
+          class="article-img rounded-circle mr-2"
+          style="height: 90px; width: 90px;"
         />
         <div class="media-body">
           <h2>
@@ -21,7 +21,7 @@
             >
           </h2>
           <p class="article-content">{{ job.job_description | truncate | markdown }}</p>
-          <div class="article-metadata">
+          <div class="article-metadata mb-4">
             <a class="mr-2" href="{{ url_for('employer.user_jobs', username=job.poster.username) }}">{{ job.poster.username }}</a>
             <small class="text-muted">{{
               job.date_posted.strftime("%d-%m-%Y")
@@ -31,9 +31,9 @@
       </article>
       {% endfor %}
   {% else %}
-      <h1 class="text-center">There are no Jobs yet, kindly check back later.</h1>
+      <h5 class="text-center">There are no Jobs yet, kindly check back later.</h5>
 {% endif %}
-<div class="container paginate">
+<div class="container paginate text-center">
   {% for page_num in jobs.iter_pages(left_edge=1, right_edge=1, left_current=1,
   right_current=2) %} {% if page_num %} {% if jobs.page == page_num %}
   <a

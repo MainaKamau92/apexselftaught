@@ -8,8 +8,7 @@ title %}{{ title }}{% endblock %} {% block body%}
         <div class="my-auto">
           <div class="header-content mx-auto">
             <div
-              class="mb-5 ml-2 text-center text-dark freelancer-bio"
-              style="background: rgba(250,250,250); padding: 15px;"
+              class="mb-5 ml-3 text-center text-dark freelancer-bio"
             >
               <small class="display-5 mb-5 mt-3">
                 {{ date.strftime("%A") }}<br />{{ date.strftime("%x") }}
@@ -31,11 +30,11 @@ title %}{{ title }}{% endblock %} {% block body%}
                 onclick="toggle()"
                 id="dashboard-btn"
                 class="btn btn-primary"
-                style="margin-bottom: 15px;"
+                style="margin-bottom: 25px;"
               >
                 Edit Info
               </button>
-              <div style="display: none" id="toggleable-form">
+              <div style="display: none" id="toggleable-form"> 
                 {{ wtf.quick_form(form, enctype="multipart/form-data", button_map={'submit': 'primary'}) }}
               </div>
             </div>
@@ -47,9 +46,7 @@ title %}{{ title }}{% endblock %} {% block body%}
     <!--Right side of the dashboard-->
     <div class="col-md-7 col-sm-12">
       <div
-        class="content-section mt-3"
-        style="background: rgba(250,250,250); padding: 15px;"
-      >
+        class="content-section mt-3 freelancer-resume">
         <div class="bio">
           {% if resume %} {% for res in resume %}
           <div class="resume container">
@@ -64,15 +61,15 @@ title %}{{ title }}{% endblock %} {% block body%}
           </div>
           <br />
           <div class="resume-body">
-            <h3>About {{ current_user.last_name }}</h3>
+            <h5>About {{ current_user.last_name }}</h5>
             <p class="about_description">{{ res.description | markdown }}</p>
-            <h3>Tools</h3>
+            <h5>Tools</h5>
             <p>{{ res.tools | markdown }}</p>
-            <h3>Experience</h3>
+            <h5>Experience</h5>
             <p>{{ res.experience | markdown }}</p>
-            <h3>Skills</h3>
+            <h5>Skills</h5>
             <p>{{ res.skills | markdown }}</p>
-            <h3>Projects</h3>
+            <h5 class="mt-5">Projects</h5>
             {% if projects %} {% for project in projects %}
             <div class="project-body">
               <a
@@ -83,7 +80,7 @@ title %}{{ title }}{% endblock %} {% block body%}
               <p>{{ project.description | markdown | truncate }}</p>
             </div>
             {% endfor %} {% else %}
-            <h1 class="text-center">No Projects Yet</h1>
+            <h5 class="text-center">No Projects Yet</h5>
             <div class="container">
               <p class="text-center" id="jigsaw">Click the JigSaw Piece to get started</p>
               <a href="{{ url_for('freelancer.post_project') }}"
@@ -97,8 +94,8 @@ title %}{{ title }}{% endblock %} {% block body%}
             {% endif %}
           </div>
           {% endfor %} {% else %}
-          <h1 class="text-center">No Resume Yet</h1>
-          <p class="lead text-center" id="jigsaw">Click the JigSaw Piece to get started</p>
+          <h3 class="text-center mt-3">No Resume Yet</h3>
+          <p class="text-center" id="jigsaw">Click the JigSaw Piece to get started</p>
           <a href="{{ url_for('freelancer.post_resume') }}"
             ><img
               class="img-jigsaw"

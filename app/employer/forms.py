@@ -52,4 +52,4 @@ class PostJobForm(FlaskForm):
                                 render_kw={'placeholder': 'email'})
     contact_number = StringField('Phone Contact', validators=[Required()],
                                  render_kw={'placeholder': '254700123456'})
-    submit = SubmitField('Add')
+    submit = SubmitField('Submit')

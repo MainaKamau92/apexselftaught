@@ -4,12 +4,12 @@ wtf %} {% extends "base.html" %} {% block title %}Login{% endblock %} {% block
 body %}
 
 <div class="content-section">
-  <fieldset class="mb-4 mt-4">
+  <fieldset class="mb-4 mt-5">
     <div class="center" id="login-form">
       <legend class="text-center" id="login-lbl"><u>LOGIN</u></legend>
       <br />
       {{ wtf.quick_form(form, button_map={'submit': 'primary'}) }}
-      <a href="{{ url_for('auth.request_reset') }}"><p class="text-dark mt-3">Forgot Password?</p class="text-dark mt-3"></a>
+      <a href="{{ url_for('auth.request_reset') }}"><p class="mt-3 text-center">Forgot Password?</p></a>
     </div>
   </fieldset>
 </div>

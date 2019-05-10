@@ -1,20 +1,20 @@
 {% extends "base.html" %} {% block body %}
 <article class="media body-section container">
   <div class="media-body" style="margin-top: 10px;">
-    <h2 class="article-title text-center"><u>{{ project.title }}</u></h2>
+    <h2 class="article-title text-center mb-5"><u>{{ project.title }}</u></h2>
 
     <div class="article-metadata" style="padding-left: 25px;">
-      <h5 style="text-decoration: underline;">
+      <h5 class="mb-3">
         <strong>Tools Used</strong>
       </h5>
       <p class="article-content">{{ project.tools_used | markdown }}</p>
-      <h5 style="text-decoration: underline;">
+      <h5 class="mb-3 mt-2">
         <strong>Project Description</strong>
       </h5>
       <p>{{ project.description | markdown }}</p>
-      <h5 style="text-decoration: underline;"><strong>Client</strong></h5>
+      <h5 class="mb-2 mt-2"><strong>Client</strong></h5>
       <p>{{ project.client }}</p>
-      <h5 style="text-decoration: underline;"><strong>Project Url Link</strong></h5>
+      <h5 class="mb-2 mt-2"><strong>Project Url Link</strong></h5>
       <a href="{{ project.url_link }}">{{ project.url_link }}</a>
 
       {% if project.architect == current_user %}

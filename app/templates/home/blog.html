@@ -7,14 +7,14 @@
   />
   <div class="card-body">
       <h2 class="card-title" id="blog-title">{{ blog.blog_title }}</h2>
-        <ul class="blog-profile mt-5">
-          <li><img
+        <ul class="navbar-nav blog-profile mt-5">
+          <li class="nav-item"><img
             src="{{ url_for('static', filename='profile_pics/' + blog.blogger.image_file )}}"
             alt="Profile picture"
             class="rounded-circle"
-            style="height: 60px; width: 70px;"
+            style="height: 70px; width: 70px;"
           /></li>
-          <li>
+          <li class="nav-item">
             <h5 class="blog-author">{{ blog.blogger.first_name}} {{ blog.blogger.last_name}}</h5>
           </li>
         </ul>

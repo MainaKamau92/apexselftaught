@@ -4,7 +4,7 @@
     style="height: 90px; width: 100px;"
     src="{{ url_for('static', filename='profile_pics/' + res_by_id.author.image_file )}}"
     alt="Profile picture"
-    class="article-img rounded-circle"
+    class="article-img rounded-circle mr-2"
   />
   <div class="media-body" style="margin-top: 10px;">
     <h2 class="article-title">{{ res_by_id.author.first_name }} {{ res_by_id.author.last_name }}</h2>

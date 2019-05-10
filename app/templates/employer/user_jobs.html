@@ -8,10 +8,10 @@ body %}
   <img
     src="{{ url_for('static', filename='profile_pics/' + job.poster.image_file )}}"
     alt="Profile picture"
-    class="article-img rounded-circle"
-    style="height: 90px; width: 100px;"
+    class="article-img rounded-circle mr-3"
+    style="height: 90px; width: 90px;"
   />
-  <div class="media-body">
+  <div class="media-body mb-4">
     <h2>
       <a
         class="article-title"
@@ -33,7 +33,7 @@ body %}
   </div>
 </article>
 {% endfor %}
-<div class="container paginate">
+<div class="container paginate text-center">
   {% for page_num in jobs.iter_pages(left_edge=1, right_edge=1, left_current=1,
   right_current=2) %} {% if page_num %} {% if jobs.page == page_num %}
   <a
