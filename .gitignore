@@ -117,3 +117,5 @@ __pycache__/
 /statis/profile_pics
 
 /env
+
+**/migrations/**
