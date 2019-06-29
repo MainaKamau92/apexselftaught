@@ -1,0 +1,39 @@
+{
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "env": {
+    "APP_SETTINGS": {
+      "required": true
+    },
+    "EMAIL_PASS": {
+      "required": true
+    },
+    "EMAIL_USER": {
+      "required": true
+    },
+    "FLASK_APP": {
+      "required": true
+    },
+    "FLASK_ENV": {
+      "required": true
+    },
+    "SECRET_KEY": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "apexselftaught",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
