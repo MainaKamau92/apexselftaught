@@ -2,7 +2,7 @@
 
 # Project Title
 
-Apex Online
+Apex Online Application
 
 # Project Backstory
 Apex is an idea that aims at creating a site that gives self
