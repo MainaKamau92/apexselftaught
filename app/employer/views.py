@@ -12,7 +12,13 @@ from .. import create_app
 from .forms import UpdateForm, PostJobForm
 from ..models import JobPost, User
 from datetime import datetime
+import cloudinary
 
+cloudinary.config(
+  cloud_name=os.getenv('cloud_name'),
+  api_key=os.getenv('api_key'),
+  api_secret=os.getenv('api_secret')
+)
 
 def date():
     now = datetime.now()
@@ -26,6 +32,15 @@ def check_employer():
 
     if not current_user.is_employer:
         abort(403)
+
+def upload_profile_image(file):
+
+    """
+    Function to upload the profile image
+    """
+    import cloudinary.uploader
+    upload_data = cloudinary.uploader.upload(file)
+    return upload_data
 
 
 def save_picture(form_picture):
@@ -63,8 +78,8 @@ def dashboard():
     form = UpdateForm()
     if form.validate_on_submit():
         if form.picture.data:
-            picture_file = save_picture(form.picture.data)
-            current_user.image_file = picture_file
+            picture_url = upload_profile_image(form.picture.data)
+            current_user.image_file = picture_url['secure_url']
         current_user.first_name = form.first_name.data
         current_user.last_name = form.last_name.data
         current_user.username = form.username.data
@@ -77,10 +92,8 @@ def dashboard():
         form.last_name.data = current_user.last_name
         form.username.data = current_user.username
         form.email.data = current_user.email
-    image_file = url_for('static',
-                         filename='profile_pics/' + current_user.image_file)
     return render_template('employer/dashboard.html', title=user.first_name + " " + user.last_name,
-                           image_file=image_file, form=form, jobs=jobs, date=date())
+                           image_file=current_user.image_file, form=form, jobs=jobs, date=date())
 
 
 @employer.route('/employer/post/new', methods=['GET', 'POST'])

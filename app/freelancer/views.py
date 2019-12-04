@@ -11,7 +11,7 @@ import os
 from .. import db
 from .. import create_app
 from ..models import Resume, Project, User
-from ..employer.views import save_picture
+from ..employer.views import upload_profile_image
 from . import freelancer
 from .forms import UpdateForm, ResumeForm, ProjectForm
 
@@ -43,8 +43,8 @@ def dashboard():
     form = UpdateForm()
     if form.validate_on_submit():
         if form.picture.data:
-            picture_file = save_picture(form.picture.data)
-            current_user.image_file = picture_file
+            picture_url = upload_profile_image(form.picture.data)
+            current_user.image_file = picture_url['secure_url']
         current_user.first_name = form.first_name.data
         current_user.last_name = form.last_name.data
         current_user.username = form.username.data
@@ -57,10 +57,8 @@ def dashboard():
         form.last_name.data = current_user.last_name
         form.username.data = current_user.username
         form.email.data = current_user.email
-    image_file = url_for('static',
-                         filename='profile_pics/' + current_user.image_file)
     return render_template('freelancer/dashboard.html', title=user.first_name + " " + user.last_name,
-                           date=date(), image_file=image_file, form=form,
+                           date=date(), image_file=current_user.image_file, form=form,
                            resume=resume, projects=projects)
 
 
